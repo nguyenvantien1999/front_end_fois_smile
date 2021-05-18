@@ -1,23 +1,48 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import Hoc from "../views/Hoc.vue";
+import KiemTra from "../views/KiemTra.vue";
+import Kaiwa from "../views/Kaiwa.vue";
+import AccountInfor from "../components/login/InforAccountComponent.vue";
+import LoginStore from "../store/LoginStore";
+import Admin from "../views/admin.vue";
+import { getModule } from "vuex-module-decorators";
+
+const loginStore = getModule(LoginStore);
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/infor",
+    name: "accountInfor",
+    component: AccountInfor,
+  },
+  {
+    path: "/n5",
+    name: "hoc",
+    component: Hoc,
+  },
+  {
+    path: "/kiemtra",
+    name: "kiemtra",
+    component: KiemTra,
+  },
+  {
+    path: "/kaiwa",
+    name: "kaiwa",
+    component: Kaiwa,
+  },
+  {
+    path: "/admin",
+    name: "loginadmin",
+    component: Admin,
   },
 ];
 
@@ -26,5 +51,32 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+const routes1: Array<RouteConfig> = [
+  {
+    path: "",
+    name: "home",
+    component: Home,
+  },
+  {
+    path: "/admin",
+    name: "loginadmin",
+    component: Admin,
+  },
+];
+
+const router1 = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes: routes1,
+});
+
+let rt = new VueRouter();
+
+if (loginStore.getSessionMaTk != undefined) {
+  rt = router;
+} else {
+  rt = router1;
+}
 
 export default router;

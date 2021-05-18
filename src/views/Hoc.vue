@@ -1,17 +1,19 @@
 <template>
   <div>
-    <home-component />
+    <n5 />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HomeComponent from "../components/Home/HomeComponent.vue";
+import N5 from "../components/hoc/N5Component.vue";
 
 @Component({
   components: {
-    HomeComponent,
+    N5,
   },
 })
-export default class Home extends Vue {}
+export default class Hoc extends Vue {}
 </script>
+
+<style></style>

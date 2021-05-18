@@ -1,17 +1,19 @@
 <template>
   <div>
-    <home-component />
+    <test />
   </div>
 </template>
 
 <script lang="ts">
+import Test from "../components/kiemtra/TestComponent.vue";
 import { Component, Vue } from "vue-property-decorator";
-import HomeComponent from "../components/Home/HomeComponent.vue";
 
 @Component({
   components: {
-    HomeComponent,
+    Test,
   },
 })
-export default class Home extends Vue {}
+export default class KiemTra extends Vue {}
 </script>
+
+<style></style>

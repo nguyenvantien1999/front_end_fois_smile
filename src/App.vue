@@ -1,32 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <header-component v-if="getShowAdmin == false" />
+    <router-view @admin="adminFlag" />
+    <footer-component v-if="getShowAdmin == false" />
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import HeaderComponent from "./components/HeaderComponent.vue";
+import FooterComponent from "./components/FooterComponent.vue";
+
+@Component({
+  components: {
+    HeaderComponent,
+    FooterComponent,
+  },
+})
+export default class App extends Vue {
+  showAdmin = false;
+  get getShowAdmin() {
+    return this.showAdmin;
+  }
+  adminFlag(data: boolean) {
+    this.showAdmin = data;
+  }
+}
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+/* Font-awesome */
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-#nav {
-  padding: 30px;
+#app,
+.modal-body,
+pre {
+  font-family: "Noto Serif JP", serif !important;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+pre {
+  font-size: 18px !important;
 }
 </style>
