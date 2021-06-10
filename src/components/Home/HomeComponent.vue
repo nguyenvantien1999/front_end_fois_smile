@@ -402,8 +402,8 @@ export default class Home extends Vue {}
   color: #ff0080;
 }
 .btnDK_lop {
-  background-color: #e9107c;
-  color: aliceblue;
+  background-color: #e9107c !important;
+  color: aliceblue !important;
   margin: 0 30px;
 }
 #bottom_lop_TN {

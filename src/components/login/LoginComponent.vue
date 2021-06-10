@@ -209,48 +209,62 @@ export default class Login extends Vue {
   }
 
   async getAccountApi() {
-    await loginStore.getAccountApi({
-      user: this.getUsername,
-      pass: this.getPassword,
-    });
-    if (this.getAccount != undefined && this.getAccount != "") {
-      alert(
-        "Tài khoản: " + this.getAccount.username + " đăng nhập thành công !!!"
-      );
-      this.logged = true;
-      loginStore.updateAccountApi();
-      if (this.getRememberMe) {
-        localStorage.setItem("matk", this.getAccount.matk);
-        localStorage.setItem("username", this.getAccount.username);
-        localStorage.setItem("password", this.getAccount.password);
-      }
-      window.location.reload();
-    } else alert("Đăng nhập thất bại");
+    if (this.getUsername != "" && this.getPassword != "") {
+      await loginStore.getAccountApi({
+        user: this.getUsername,
+        pass: this.getPassword,
+      });
+      if (this.getAccount != undefined && this.getAccount != "") {
+        alert(
+          "Tài khoản: " + this.getAccount.username + " đăng nhập thành công !!!"
+        );
+        this.logged = true;
+        loginStore.updateAccountApi();
+        if (this.getRememberMe) {
+          localStorage.setItem("matk", this.getAccount.matk);
+          localStorage.setItem("username", this.getAccount.username);
+          localStorage.setItem("password", this.getAccount.password);
+        }
+        window.location.reload();
+      } else alert("Đăng nhập thất bại");
+    } else {
+      alert("không được để trống các trường!!!");
+    }
   }
   async registration() {
-    if (this.getPassword != this.getPassAgain) {
-      alert("Mật khẩu không đồng nhất");
-    } else {
-      await axios
-        .get("https://backend-fois-smile.herokuapp.com/account/regis", {
-          params: {
-            record: {
-              username: this.getUsername,
-              pass: this.getPassword,
-              hoten: this.getHoTen,
+    if (
+      this.getUsername != "" &&
+      this.getHoTen != "" &&
+      this.getPassword != "" &&
+      this.getPassAgain != ""
+    ) {
+      if (this.getPassword != this.getPassAgain) {
+        alert("Mật khẩu không đồng nhất");
+      } else {
+        await axios
+          .get("https://backend-fois-smile.herokuapp.com/account/regis", {
+            params: {
+              record: {
+                username: this.getUsername,
+                pass: this.getPassword,
+                hoten: this.getHoTen,
+              },
             },
-          },
-        })
-        .then((res) => {
-          if (res.data == true) {
-            alert("Đăng ký thành công");
-            this.loggin = !this.loggin;
-            this.linklogin = "Đăng ký";
-            this.password = "";
-          } else {
-            alert("Đăng ký thất bại, tài khoản đã tồn tại");
-          }
-        });
+          })
+          .then((res) => {
+            if (res.data == true) {
+              alert("Đăng ký thành công");
+              this.loggin = !this.loggin;
+              this.linklogin = "Đăng ký";
+              this.password = "";
+            } else {
+              alert("Đăng ký thất bại, tài khoản đã tồn tại");
+            }
+          });
+      }
+    }
+    else{
+      alert("Không được để trống các trường!!!");
     }
   }
 

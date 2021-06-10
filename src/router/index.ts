@@ -79,4 +79,4 @@ if (loginStore.getSessionMaTk != undefined) {
   rt = router1;
 }
 
-export default router;
+export default rt;

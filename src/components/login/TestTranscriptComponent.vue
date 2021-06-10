@@ -44,7 +44,6 @@ export default class TestTranscript extends Vue {
       })
       .then((res) => {
         this.testTranscript = res.data;
-        console.log(res.data);
       });
     return 0;
   }

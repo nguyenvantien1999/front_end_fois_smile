@@ -20,19 +20,7 @@
     </h4>
     <hr />
     <div class="ml-5 mb-5 ml-5">
-      <div class="d-flex justify-content-center mb-3">
-        <p>
-          <b class="text-danger">{{ getAccountInfor.hoten }}</b>
-        </p>
-        <textarea
-          class="ml-2"
-          placeholder="Viết bình luận của bạn"
-          rows="1"
-          v-model="comment"
-        ></textarea>
-        <button class="btn btn-info ml-2" @click="addComment">bình luận</button>
-      </div>
-      <comment :propMaBH="propMaBH" :key="getReloadComment" />
+      <comment :propMaBH="propMaBH" />
     </div>
   </div>
 </template>
@@ -66,16 +54,6 @@ export default class LessonComponent extends Vue {
   propMaBH: any;
   private lessonPart = ["Từ vựng", "Ngữ pháp", "Nghe", "Bài tập"];
   private selectLessonPart = 0;
-  private comment = "";
-  private reloadComment = 0;
-
-  get getReloadComment() {
-    return this.reloadComment;
-  }
-
-  get getComment() {
-    return this.comment;
-  }
 
   get getPropContent() {
     this.selectLessonPart = 0;
@@ -145,23 +123,6 @@ export default class LessonComponent extends Vue {
       .catch((e) => {
         console.log(e);
       });
-  }
-
-  async addComment() {
-    await axios
-      .get("https://backend-fois-smile.herokuapp.com/comment/addcomment", {
-        params: {
-          ndbl: this.getComment,
-          thoigian: Date.now(),
-          matk: this.getAccountInfor.matk,
-          mabh: this.propMaBH,
-        },
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    this.comment = "";
-    this.reloadComment++;
   }
 }
 </script>

@@ -16,7 +16,7 @@
           value="Làm lại"
         />
       </h5>
-      <div class="nhanxet mt-4 mb-5 text-center" v-if="getPoint > 60">
+      <div class="nhanxet mt-4 mb-5 text-center" v-if="getPoint > 70">
         <h4 class="text-danger"><i>Điểm bạn rất cao, làm tốt lắm !!!</i></h4>
         <p class="text-danger">
           <i>あなたのスコアは非常に高く、良い仕事です!!!</i>
@@ -112,6 +112,9 @@ export default class ContentTest extends Vue {
     this.point += answer.diem;
     this.tongCauDung += answer.soCauDung;
     this.tongCH += answer.soCH;
+    // this.point = 90;
+    // this.tongCauDung = 90;
+    // this.tongCH = 100;
   }
   reset() {
     this.point = 0;

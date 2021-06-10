@@ -87,7 +87,7 @@ export default class ListBH extends Vue {
   }
 
   async selectBH(bai: any) {
-    if (this.getProgress.length >= bai.vitri - 1) {
+    if (this.getProgress.length >= bai.vitri-1) {
       this.activeBH = bai.vitri;
       this.$emit("selectBH", bai.vitri);
       this.$emit("selectMaBH", bai.mabh);

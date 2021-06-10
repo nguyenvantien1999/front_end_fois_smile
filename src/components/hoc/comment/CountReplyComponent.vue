@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <span @show="getReplyAPI">
     {{ getLength }}
   </span>
 </template>
@@ -7,6 +7,8 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import axios from "axios";
+import Stomp from "webstomp-client";
+import SockJS from "sockjs-client";
 
 @Component
 export default class CountReply extends Vue {
@@ -18,13 +20,11 @@ export default class CountReply extends Vue {
     return this.length;
   }
 
-  mounted() {
-    setInterval(() => {
-      this.getReplyAPI();
-    }, 1000);
+  created() {
+    this.connect();
   }
 
-  getReplyAPI() {
+  get getReplyAPI() {
     let length = 0;
     axios
       .get("https://backend-fois-smile.herokuapp.com/reply/getreply", {
@@ -33,8 +33,23 @@ export default class CountReply extends Vue {
         },
       })
       .then(async (res) => {
-        this.length = res.data.length;
+        if (this.length != res.data.length) {
+          this.length = res.data.length;
+        }
       });
+    return 0;
+  }
+  connect() {
+    const client = new SockJS("https://backend-fois-smile.herokuapp.com/websocket");
+    const stompClient = Stomp.over(client);
+    stompClient.connect({}, (frame) => {
+      stompClient.subscribe("/topic/getRepSocket", (tick) => {
+        var rep = JSON.parse(tick.body);
+        if (rep[0].mabl == this.propMaBL) {
+          this.length = rep.length;
+        }
+      });
+    });
   }
 }
 </script>
