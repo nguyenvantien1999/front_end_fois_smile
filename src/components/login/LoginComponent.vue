@@ -129,9 +129,7 @@
               />
             </div>
             <div class="d-flex justify-content-center mt-3 login_container">
-              <button class="btn login_btn" @click="registration">
-                Đăng Ký
-              </button>
+              <input type="button" class="btn login_btn" value="Đăng ký" @click="registration"/>
             </div>
           </form>
         </div>

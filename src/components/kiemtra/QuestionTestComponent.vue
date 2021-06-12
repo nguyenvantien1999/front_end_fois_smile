@@ -163,8 +163,8 @@ export default class QuestionTest extends Vue {
   background-color: #ff0080 !important;
   text-shadow: 1px 1px 1px rgb(141, 141, 141);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
 }
 .btnTestPage:hover {
   color: white !important;

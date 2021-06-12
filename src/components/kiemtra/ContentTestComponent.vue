@@ -1,5 +1,5 @@
 <template>
-  <div @show="getQuestionAPI" class="mt-3 ml-4">
+  <div @show="getQuestionAPI" class="mt-3 ml-4 mr-4">
     <div v-if="getShowDiem">
       <h3 id="tieuDeBH" class="text-center">
         <b>Bạn đã hoàn thành bài kiểm tra</b>
@@ -34,6 +34,20 @@
       </div>
     </div>
     <p v-else>
+      <span v-if="propMaBai == ''" class="text-justify">
+        <h2 id="tieuDeBH" class="mt-5 mb-4">
+          <b>Một số lưu ý khi làm bài kiểm tra</b>
+        </h2>
+        <h6 class="pl-5 pr-5" style="color: gray;">
+          Nội dung bài kiểm tra giúp bạn ôn tập lại các kiến thức đã học. 
+          Thời gian làm bài là 60 phút, bạn phải nộp bài trước khi thời gian kết thúc.
+          Khi thời gian kết thúc hệ thống sẽ tự động nộp và tính điểm những gì bạn đã nộp và lưu vào lịch sử kiểm tra.
+          Khi bạn chọn đề bên thanh menu thời gian sẽ bắt đầu tính vì thế hãy chuẩn bị sẵn sàng trước khi mở đề.
+          Câu hỏi sẽ được phân thành từng phần, nhấn nộp bài để chốt đáp án và sang phần tiếp theo.
+          Những câu có hai đáp án sẽ được cách nhau bởi dấu "、". Kết quả kiểm tra sẽ được hiện thị khi bạn nộp tất cả các câu hỏi.
+        </h6>
+        <h5 class="text-center mb-5"><b>Chúc bạn hoàn thành tốt bài kiểm tra!!!</b></h5>
+      </span>
       <clock v-if="propMaBai != '' && getQuestion[getviTriCH] != undefined" :key="propMaBai" @hetgio="hetgio"/>
       <span v-if="propMaBai != '' && getQuestion[getviTriCH] == undefined" class="text-center">
         <h3 class="mt-5" style="color: gray;">Chưa cập nhật đề kiểm tra</h3>

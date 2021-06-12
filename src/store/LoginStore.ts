@@ -41,23 +41,37 @@ export default class LoginStore extends VuexModule {
 
   @Action
   async updateAccountApi() {
-    await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/update", {
-        params: {
-          record: this.getStateAccount,
-        },
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    if (this.getStateAccount != "") {
+      const acc: any = this.getStateAccount;
+      await axios
+        .get("https://backend-fois-smile.herokuapp.com/account/update", {
+          params: {
+            matk: acc.matk,
+            username: acc.username,
+            password: acc.password,
+            loaitk: acc.loaitk,
+            thoigiandn: acc.thoigiandn,
+            remove: acc.remove,
+          },
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   }
 
   @Action
   async updateAccountInforApi() {
+    const acc: any = this.getAccountInfor;
     await axios
       .get("https://backend-fois-smile.herokuapp.com/account/info/update", {
         params: {
-          record: this.getAccountInfor,
+          matt: acc.matt,
+          hoten: acc.hoten,
+          ngaysinh: acc.ngaysinh != null ? Date.parse(acc.ngaysinh): 0,
+          gioitinh: acc.gioitinh,
+          diachi: acc.diachi,
+          matk: acc.matk,
         },
       })
       .catch((e) => {

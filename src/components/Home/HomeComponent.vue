@@ -101,7 +101,7 @@
     <!-- slide khách hàng-->
     <div class="container" style="margin-top: 30px">
       <div class="row">
-        <div id="slideKH" class="carousel slide col-lg-12" data-ride="carousel">
+        <b-carousel controls id="slideKH">
           <div class="carousel-inner">
             <div class="background">
               <h3 class="text-center d-lg-none">
@@ -114,7 +114,7 @@
               />
             </div>
 
-            <div class="carousel-item active">
+            <b-carousel-slide>
               <div class="carousel-caption">
                 <h3 class="text-center mb-lg-5 d-none d-lg-block">
                   <b>KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</b>
@@ -139,10 +139,10 @@
                 </p>
                 <h3>Lê Việc Hùng (23 tuổi)</h3>
               </div>
-            </div>
-            <div class="carousel-item">
+            </b-carousel-slide>
+            <b-carousel-slide>
               <div class="carousel-caption">
-                <h3 class="text-center mb-lg-5 d-none d-lg-block">
+                <h3 class="text-center mb-lg-4 d-none d-lg-block">
                   <b>KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</b>
                 </h3>
                 <div class="d-none d-md-block">
@@ -165,10 +165,10 @@
                 </p>
                 <h3>Lê Hoàng Trung (27 tuổi)</h3>
               </div>
-            </div>
-            <div class="carousel-item">
+            </b-carousel-slide>
+            <b-carousel-slide>
               <div class="carousel-caption">
-                <h3 class="text-center mb-lg-5 d-none d-lg-block">
+                <h3 class="text-center mb-lg-4 d-none d-lg-block">
                   <b>KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</b>
                 </h3>
                 <div class="d-none d-md-block">
@@ -192,15 +192,15 @@
                 </p>
                 <h3 class="">Võ Văn Phụng (27 tuổi)</h3>
               </div>
-            </div>
+            </b-carousel-slide>
           </div>
-          <a class="carousel-control-prev" href="#slideKH" data-slide="prev">
+          <!-- <a class="carousel-control-prev" href="#slideKH" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </a>
           <a class="carousel-control-next" href="#slideKH" data-slide="next">
             <span class="carousel-control-next-icon"></span>
-          </a>
-        </div>
+          </a> -->
+        </b-carousel>
       </div>
     </div>
     <div id="bang_tin">

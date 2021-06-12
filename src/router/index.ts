@@ -7,6 +7,7 @@ import Kaiwa from "../views/Kaiwa.vue";
 import AccountInfor from "../components/login/InforAccountComponent.vue";
 import LoginStore from "../store/LoginStore";
 import Admin from "../views/admin.vue";
+import Thi from "../views/Thi.vue";
 import { getModule } from "vuex-module-decorators";
 
 const loginStore = getModule(LoginStore);
@@ -43,6 +44,11 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "loginadmin",
     component: Admin,
+  },
+  {
+    path: "/thithu",
+    name: "thithu",
+    component: Thi,
   },
 ];
 
