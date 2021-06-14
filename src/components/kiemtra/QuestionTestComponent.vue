@@ -163,6 +163,7 @@ export default class QuestionTest extends Vue {
   background-color: #ff0080 !important;
   text-shadow: 1px 1px 1px rgb(141, 141, 141);
   display: flex;
+  margin: 0 auto;
   align-items: center !important;
   justify-content: center !important;
 }
