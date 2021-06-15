@@ -236,7 +236,10 @@ export default class Login extends Vue {
       this.getPassword != "" &&
       this.getPassAgain != ""
     ) {
-      if (this.getPassword != this.getPassAgain) {
+      if(this.validatEemail(this.getUsername) == false){
+        alert("Vui lòng nhập đúng địa chỉ email");
+      }
+      else if (this.getPassword != this.getPassAgain) {
         alert("Mật khẩu không đồng nhất");
       } else {
         await axios
@@ -264,6 +267,15 @@ export default class Login extends Vue {
     else{
       alert("Không được để trống các trường!!!");
     }
+  }
+  validatEemail(email: string) {
+      var atposition = email.indexOf("@");
+      var dotposition = email.lastIndexOf(".");
+      if (atposition < 1 || dotposition < (atposition + 2)
+              || (dotposition + 2) >= email.length) {
+          return false;
+      }
+      else return true;
   }
 
   dangKy_dangNhap() {
