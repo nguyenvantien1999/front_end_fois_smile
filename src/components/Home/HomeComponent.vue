@@ -10,20 +10,23 @@
     <div id="content_ve_fois">
       <div id="div_header_fois_smile">
         <div>
-          <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <i class="fa fa-user-circle d-none d-lg-block" aria-hidden="true"></i>
           <p><b>Giảng viên</b><br />Hàng đầu Việt Nam</p>
         </div>
         <div>
-          <i class="fa fa-book" aria-hidden="true"></i>
-          <p><b>Chương trình học</b><br />Bám sát đề thi</p>
+          <i class="fa fa-book d-none d-lg-block" aria-hidden="true"></i>
+          <p class="d-none d-lg-block"><b>Chương trình học</b><br />Bám sát đề thi</p>
+          <p class="d-lg-none"><b>Chương trình học</b><br />Bám sát đề</p>
         </div>
         <div>
-          <i class="fa fa-plane" aria-hidden="true"></i>
-          <p><b>Hỗ trợ việc làm</b><br />Kỹ sư cầu nối</p>
+          <i class="fa fa-plane d-none d-lg-block" aria-hidden="true"></i>
+          <p class="d-none d-lg-block"><b>Hỗ trợ việc làm</b><br />Kỹ sư cầu nối</p>
+          <p class="d-lg-none"><b>Việc làm</b><br />Kỹ sư <br> cầu nối</p>
         </div>
         <div>
-          <i class="fa fa-question-circle" aria-hidden="true"></i>
-          <p><b>Sẵn sàng giải đáp</b><br />Câu hỏi học viên</p>
+          <i class="fa fa-question-circle d-none d-lg-block" aria-hidden="true"></i>
+          <p class="d-none d-lg-block"><b>Sẵn sàng giải đáp</b><br />Câu hỏi học viên</p>
+          <p class="d-lg-none"><b>Sẵn sàng giải đáp</b><br />câu hỏi</p>
         </div>
       </div>
       <div id="text_content_ve_fois_smile" class="text-center">
@@ -119,7 +122,7 @@
                 <h3 class="text-center mb-lg-5 d-none d-lg-block">
                   <b>KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</b>
                 </h3>
-                <div class="d-none d-md-block">
+                <div class="d-none d-lg-block">
                   <img
                     src="../../assets/images/khach_hang/kh_hung.jpg"
                     class="rounded-circle shadow mt-lg-5"
@@ -145,7 +148,7 @@
                 <h3 class="text-center mb-lg-4 d-none d-lg-block">
                   <b>KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</b>
                 </h3>
-                <div class="d-none d-md-block">
+                <div class="d-none d-lg-block">
                   <img
                     src="../../assets/images/khach_hang/kh_trung.jpg"
                     class="rounded-circle shadow mt-lg-5"
@@ -163,7 +166,7 @@
                     ></i
                   >
                 </p>
-                <h3>Lê Hoàng Trung (27 tuổi)</h3>
+                <h3>Lê Hoàng Trung(27 tuổi)</h3>
               </div>
             </b-carousel-slide>
             <b-carousel-slide>
@@ -171,7 +174,7 @@
                 <h3 class="text-center mb-lg-4 d-none d-lg-block">
                   <b>KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI</b>
                 </h3>
-                <div class="d-none d-md-block">
+                <div class="d-none d-lg-block">
                   <img
                     src="../../assets/images/khach_hang/kh_phung.jpg"
                     class="rounded-circle shadow mt-lg-5"
@@ -190,16 +193,10 @@
                     >
                   </i>
                 </p>
-                <h3 class="">Võ Văn Phụng (27 tuổi)</h3>
+                <h3>Võ Văn Phụng (27 tuổi)</h3>
               </div>
             </b-carousel-slide>
           </div>
-          <!-- <a class="carousel-control-prev" href="#slideKH" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" href="#slideKH" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a> -->
         </b-carousel>
       </div>
     </div>
@@ -208,8 +205,8 @@
         <h4><b>Bảng tin FOIS Smile</b></h4>
         <i>Đào tạo & Tuyển dụng</i>
       </div>
-      <div class="row">
-        <div id="tin_noi_bat">
+      <b-row class="row">
+        <b-col col md="6" id="tin_noi_bat">
           <h4><b>Bảng tin nổi bật</b></h4>
           <br />
           <p>
@@ -227,8 +224,8 @@
             - Trở thành nhân viên chính thức sau 4-6 tháng thực tập <br />
             Thông tin liên hệ: facebook hoặc phone: 02873078885 <br />
           </p>
-        </div>
-        <div id="tin_thuong">
+        </b-col>
+        <b-col col md="6" id="tin_thuong">
           <div id="header_tin_thuong" class="d-flex">
             <p class="btn"><b>Đào tạo</b></p>
             <p class="btn"><b>Tuyển dụng</b></p>
@@ -257,8 +254,8 @@
               <hr />
             </div>
           </div>
-        </div>
-      </div>
+        </b-col>
+      </b-row>
     </div>
   </div>
 </template>
@@ -353,6 +350,14 @@ export default class Home extends Vue {}
   font-size: 17px;
   font-weight: initial;
   text-shadow: 1px 2px 5px white;
+}
+@media only screen and (max-width: 1024px) {
+  #text_content_ve_fois_smile div {
+    margin: 2px 20px !important;
+  }
+  #header_lop_TN{
+    margin-top: 15px !important;
+  }
 }
 
 /* lop hoc */
@@ -462,7 +467,7 @@ export default class Home extends Vue {}
   color: #ff0080;
 }
 #tin_noi_bat {
-  width: 50%;
+  /* width: 50%; */
   margin-top: 10px;
   padding: 10px 20px;
   border-radius: 50px;
@@ -471,12 +476,12 @@ export default class Home extends Vue {}
 #tin_noi_bat h4 {
   color: #e9107c;
 }
-#tin_thuong {
-  width: 48%;
-  margin-top: 10px;
-  margin-left: 20px;
-  right: 0;
-}
+/* #tin_thuong { */
+  /* width: 48%; */
+  /* margin-top: 10px; */
+  /* margin-left: 20px; */
+  /* right: 0; */
+/* } */
 #header_tin_thuong {
   background-color: #ff69b4;
   border-top-left-radius: 40px;

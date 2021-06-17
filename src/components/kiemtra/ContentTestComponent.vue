@@ -21,7 +21,7 @@
         <p class="text-danger">
           <i>あなたのスコアは非常に高く、良い仕事です!!!</i>
         </p>
-        <img src="../../assets/images/diemcao.gif" alt="" />
+        <img class="img-fluid" src="../../assets/images/diemcao.gif" alt="" />
       </div>
       <div class="nhanxet mt-4 mb-5 text-center" v-else>
         <h4 class="text-danger">
@@ -30,7 +30,7 @@
         <p class="text-danger">
           <i>よくありません。次回は頑張ってください!!!</i>
         </p>
-        <img src="../../assets/images/diemthap.gif" alt="" />
+        <img class="img-fluid" src="../../assets/images/diemthap.gif" alt="" />
       </div>
     </div>
     <p v-else>
