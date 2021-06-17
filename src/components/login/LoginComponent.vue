@@ -129,7 +129,12 @@
               />
             </div>
             <div class="d-flex justify-content-center mt-3 login_container">
-              <input type="button" class="btn login_btn" value="Đăng ký" @click="registration"/>
+              <input
+                type="button"
+                class="btn login_btn"
+                value="Đăng ký"
+                @click="registration"
+              />
             </div>
           </form>
         </div>
@@ -147,6 +152,7 @@
       </div>
     </div>
     <quen-mk />
+    <load v-if="getLoading" />
   </b-modal>
 </template>
 
@@ -156,12 +162,14 @@ import axios from "axios";
 import LoginStore from "../../store/LoginStore";
 import { getModule } from "vuex-module-decorators";
 import QuenMk from "./QuenMKComponent.vue";
+import Load from "../LoadComponent.vue";
 
 const loginStore = getModule(LoginStore);
 
 @Component({
   components: {
     QuenMk,
+    Load,
   },
 })
 export default class Login extends Vue {
@@ -174,7 +182,11 @@ export default class Login extends Vue {
   private rememberMe = false;
   private textlogin = "Chưa có tài khoản?";
   private linklogin = "Đăng ký";
+  private loading = false;
 
+  get getLoading() {
+    return this.loading;
+  }
   get getPassAgain() {
     return this.passAgain;
   }
@@ -208,11 +220,13 @@ export default class Login extends Vue {
 
   async getAccountApi() {
     if (this.getUsername != "" && this.getPassword != "") {
+      this.loading = true;
       await loginStore.getAccountApi({
         user: this.getUsername,
         pass: this.getPassword,
       });
       if (this.getAccount != undefined && this.getAccount != "") {
+        this.loggin = false;
         alert(
           "Tài khoản: " + this.getAccount.username + " đăng nhập thành công !!!"
         );
@@ -224,8 +238,12 @@ export default class Login extends Vue {
           localStorage.setItem("password", this.getAccount.password);
         }
         window.location.reload();
-      } else alert("Đăng nhập thất bại");
+      } else {
+        this.loading = false;
+        alert("Đăng nhập thất bại");
+      }
     } else {
+      this.loggin = false;
       alert("không được để trống các trường!!!");
     }
   }
@@ -236,12 +254,12 @@ export default class Login extends Vue {
       this.getPassword != "" &&
       this.getPassAgain != ""
     ) {
-      if(this.validatEemail(this.getUsername) == false){
+      if (this.validatEemail(this.getUsername) == false) {
         alert("Vui lòng nhập đúng địa chỉ email");
-      }
-      else if (this.getPassword != this.getPassAgain) {
+      } else if (this.getPassword != this.getPassAgain) {
         alert("Mật khẩu không đồng nhất");
       } else {
+        this.loading = true;
         await axios
           .get("https://backend-fois-smile.herokuapp.com/account/regis", {
             params: {
@@ -254,28 +272,32 @@ export default class Login extends Vue {
           })
           .then((res) => {
             if (res.data == true) {
+              this.loading = false;
               alert("Đăng ký thành công");
               this.loggin = !this.loggin;
               this.linklogin = "Đăng ký";
               this.password = "";
             } else {
+              this.loading = false;
               alert("Đăng ký thất bại, tài khoản đã tồn tại");
             }
           });
       }
-    }
-    else{
+    } else {
+      this.loading = false;
       alert("Không được để trống các trường!!!");
     }
   }
   validatEemail(email: string) {
-      var atposition = email.indexOf("@");
-      var dotposition = email.lastIndexOf(".");
-      if (atposition < 1 || dotposition < (atposition + 2)
-              || (dotposition + 2) >= email.length) {
-          return false;
-      }
-      else return true;
+    var atposition = email.indexOf("@");
+    var dotposition = email.lastIndexOf(".");
+    if (
+      atposition < 1 ||
+      dotposition < atposition + 2 ||
+      dotposition + 2 >= email.length
+    ) {
+      return false;
+    } else return true;
   }
 
   dangKy_dangNhap() {

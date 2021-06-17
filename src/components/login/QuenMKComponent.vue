@@ -26,18 +26,28 @@
         value="Nhận mật khẩu"
       />
     </div>
+    <load v-if="getLoading" />
   </b-modal>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
+import Load from "../LoadComponent.vue";
 
-@Component
+@Component({
+  components: {
+    Load,
+  },
+})
 export default class QuenMK extends Vue {
   private username = "";
   private ketQua = false;
+  private loading = false;
 
+  get getLoading() {
+    return this.loading;
+  }
   get getKetQua() {
     return this.ketQua;
   }
@@ -47,6 +57,7 @@ export default class QuenMK extends Vue {
 
   sendPass() {
     if (this.getUserName != "") {
+      this.loading = true;
       axios
         .get("https://backend-fois-smile.herokuapp.com/sendpasstomail", {
           params: {
@@ -54,6 +65,7 @@ export default class QuenMK extends Vue {
           },
         })
         .then((res) => {
+          this.loading = false;
           if (res.data == true) {
             alert("Mật khẩu đã được gửi đến email: " + this.getUserName);
             this.$bvModal.hide("quenMK");
@@ -62,6 +74,7 @@ export default class QuenMK extends Vue {
           }
         });
     } else {
+      this.loading = false;
       alert("Hãy nhập tên tài khoản của bạn!!!");
     }
   }
