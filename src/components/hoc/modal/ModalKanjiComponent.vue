@@ -100,7 +100,7 @@ export default class ModalKanji extends Vue {
     drawScript.innerHTML = `var draw = document.getElementById("draw");
 		var dmak = new Dmak('${this.chuCai.tenchu}',{ 
       'element': "draw", 
-      "uri": "http://kanjivg.tagaini.net/kanjivg/kanji/", 
+      "uri": "https://kanjivg.tagaini.net/kanjivg/kanji/", 
       height: 150,
       width: 150,
       step: 0.015});
