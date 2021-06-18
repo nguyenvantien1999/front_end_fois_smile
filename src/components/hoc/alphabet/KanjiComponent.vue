@@ -17,7 +17,7 @@
         </tr>
       </table>
     </div>
-    <b-col class="d-lg-none">
+    <b-col class="">
       <table class="mt-5 mb-5" style="margin: 0 auto" name="Kanji">
         <tr v-for="(hang, i) in getKanji" :key="i">
           <b-th
@@ -25,12 +25,8 @@
             :class="{ th: chu.tenchu != '' }"
             v-for="chu in hang"
             :key="chu.machu"
-            >{{ chu.tenchu
-            }}<modal-kanji
-              :propID="`kanjiModal${chu.machu}`"
-              v-if="chu.tenchu != ''"
-              :chuCai="chu"
-          /></b-th>
+            >{{ chu.tenchu }}
+          </b-th>
         </tr>
       </table>
     </b-col>
