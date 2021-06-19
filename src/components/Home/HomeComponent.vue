@@ -140,7 +140,7 @@
                     ></i
                   >
                 </p>
-                <h3>Lê Việc Hùng (23 tuổi)</h3>
+                <h3>Lê Việt Hùng (23 tuổi)</h3>
               </div>
             </b-carousel-slide>
             <b-carousel-slide>

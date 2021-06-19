@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5" id="infor">
     <div id="header_bang_tin">
-      <h4><b>Thông tin tài khoảng</b></h4>
+      <h4><b>Thông tin tài khoản</b></h4>
     </div>
     <table id="inforTB">
       <tr v-for="(info, i) in inforTitle" :key="i">
