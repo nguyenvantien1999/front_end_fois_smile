@@ -18,7 +18,7 @@ export default class HigaranaStore extends VuexModule {
   @Action
   async getBDHiraApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/word/hiragana/chudon")
+      .get("http://localhost:3000/word/hiragana/chudon")
       .then((res) => {
         this.context.commit("setBangHiraganaDon", res.data);
       });
@@ -27,7 +27,7 @@ export default class HigaranaStore extends VuexModule {
   @Action
   async getBKHiraApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/word/hiragana/chukep")
+      .get("http://localhost:3000/word/hiragana/chukep")
       .then((res) => {
         this.context.commit("setBangHiraganakep", res.data);
       });

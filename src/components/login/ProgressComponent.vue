@@ -71,7 +71,7 @@ export default class Progress extends Vue {
 
   get progressAPI() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/getAll", {
+      .get("http://localhost:3000/progress/getAll", {
         params: {
           matk: loginStore.getSessionMaTk,
         },

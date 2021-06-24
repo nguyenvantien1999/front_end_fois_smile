@@ -25,7 +25,7 @@
         <h2><b>Trang quản trị FOIS-Smile</b></h2>
         <p>
           Quản trị viên: {{ getInfoAdmin.hoten }} <br />
-          <span class="text-danger"><b>Đăng xuất</b></span>
+          <a id="dangxuatAD" class="text-danger" href="/admin" @click="logOut"><b>Đăng xuất</b></a>
         </p>
       </div>
     </div>
@@ -34,6 +34,7 @@
       <ds-tai-khoan-hv v-if="getNavAdmin == 1" @nav="setNav"/>
       <ds-hoc-vien v-if="getNavAdmin == 2" @nav="setNav"/>
       <tien-do-ht v-if="getNavAdmin == 3" @nav="setNav"/>
+      <tien-do-kiem-tra v-if="getNavAdmin == 4" @nav="setNav"/>
     </div>
   </div>
 </template>
@@ -46,6 +47,7 @@ import NavAdmin from "./NavAdminComponent.vue";
 import DsTaiKhoanHv from "./chuc_nang/tai_khoan_hoc_vien/DSTaiKhoanHVComponent.vue";
 import DsHocVien from "./chuc_nang/danh_sach_hoc_vien/DSHocVienComponent.vue";
 import TienDoHt from "./chuc_nang/tien_do_hoc_tap/TienDoHTComponent.vue";
+import TienDoKiemTra from "./chuc_nang/diem_bai_kiem_tra/TienDoKiemTraComponent.vue";
 
 const loginAdminStore = getModule(LoginAdminStore);
 
@@ -55,6 +57,7 @@ const loginAdminStore = getModule(LoginAdminStore);
     DsTaiKhoanHv,
     DsHocVien,
     TienDoHt,
+    TienDoKiemTra,
   },
 })
 export default class AdminComponent extends Vue {
@@ -65,6 +68,10 @@ export default class AdminComponent extends Vue {
   }
   get getInfoAdmin() {
     return loginAdminStore.getAccAdminInfor;
+  }
+  private logOut() {
+    sessionStorage.clear();
+    localStorage.clear();
   }
   created() {
     loginAdminStore.getAccAdminInforApi();
@@ -91,5 +98,8 @@ export default class AdminComponent extends Vue {
   border-left: 45px solid #ff69b4;
   border-right: 45px solid #ff69b4;
   background-color: #ffe4e1;
+}
+#dangxuatAD:hover{
+  cursor: pointer;
 }
 </style>

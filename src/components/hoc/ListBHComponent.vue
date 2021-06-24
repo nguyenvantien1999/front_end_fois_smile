@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import LessonStore from "../../store/hoc/lesson/LessonStore";
 import { getModule } from "vuex-module-decorators";
 import axios from "axios";
@@ -49,21 +49,23 @@ const loginStore = getModule(LoginStore);
 
 @Component
 export default class ListBH extends Vue {
+  @Prop()
+  private propBH: any;
   private activeBH = 0;
-  private progress = "";
   private hover = -1;
 
   get getHover() {
     return this.hover;
   }
   get getActiveBH() {
+    if(this.propBH != null) this.activeBH = this.propBH;
     return this.activeBH;
   }
   get getLesson() {
     return lessonStore.geStateLesson;
   }
   get getProgress() {
-    return this.progress;
+    return lessonStore.getStateProgress;
   }
 
   beforeCreate() {
@@ -71,19 +73,7 @@ export default class ListBH extends Vue {
   }
 
   created() {
-    this.getProgressAPI();
-  }
-
-  getProgressAPI() {
-    axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/getAllMaBH", {
-        params: {
-          matk: loginStore.getSessionMaTk,
-        },
-      })
-      .then((res) => {
-        this.progress = res.data;
-      });
+    lessonStore.getProgressAPI();
   }
 
   async selectBH(bai: any) {
@@ -93,7 +83,7 @@ export default class ListBH extends Vue {
       this.$emit("selectMaBH", bai.mabh);
       if (bai.mabh != -1) {
         await axios
-          .get("https://backend-fois-smile.herokuapp.com/progress/insert", {
+          .get("http://localhost:3000/progress/insert", {
             params: {
               tuvung: true,
               matk: loginStore.getSessionMaTk,
@@ -103,7 +93,7 @@ export default class ListBH extends Vue {
           .catch((e) => {
             console.log(e);
           });
-        await this.getProgressAPI();
+        await lessonStore.getProgressAPI();
       }
     }
   }

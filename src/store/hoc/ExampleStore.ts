@@ -13,7 +13,7 @@ export default class ExampleStore extends VuexModule {
   @Action
   async getExampleApi(machu: string) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/example", {
+      .get("http://localhost:3000/example", {
         params: {
           machu: machu,
         },

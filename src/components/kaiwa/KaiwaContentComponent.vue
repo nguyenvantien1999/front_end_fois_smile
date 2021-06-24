@@ -63,7 +63,7 @@ export default class KaiwaContent extends Vue {
   }
   get getKWApi() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/kaiwa/content", {
+      .get("http://localhost:3000/kaiwa/content", {
         params: {
           maht: this.getIDKW,
         },

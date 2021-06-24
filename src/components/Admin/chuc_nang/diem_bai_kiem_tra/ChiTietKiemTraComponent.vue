@@ -1,9 +1,6 @@
 <template>
-  <div @show="transcriptAPI">
-    <h4 id="tieuDeBH" class="mt-5">
-      <b>Bảng điểm kiểm tra</b>
-    </h4>
-    <table id="tableTest" v-if="getTestTranscript != ''">
+  <b-modal id="chiTietKT" hide-footer :title-html="title">
+    <table id="tableTest" @show="transcriptAPI">
       <tr>
         <th><b>STT</b></th>
         <th><b>Thời gian</b></th>
@@ -17,21 +14,21 @@
         <td>{{ bai.diem }}/100点</td>
       </tr>
     </table>
-    <p v-else class="text-center">Chưa có bài kiểm tra nào</p>
-  </div>
+  </b-modal>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import axios from "axios";
-import LoginStore from "../../store/LoginStore";
-import { getModule } from "vuex-module-decorators";
-
-const loginStore = getModule(LoginStore);
 
 @Component
-export default class TestTranscript extends Vue {
+export default class ChiTietKiemTra extends Vue {
+  @Prop()
+  propMaTK: any;
   private testTranscript = "";
+  private title =
+    "<b style='color: #ff69b4; text-shadow: 1px 1px 1px black;'>Tiến độ làm kiểm tra</b>";
+
   get getTestTranscript() {
     return this.testTranscript;
   }
@@ -39,7 +36,7 @@ export default class TestTranscript extends Vue {
     axios
       .get("http://localhost:3000/testTranscript/get", {
         params: {
-          matk: loginStore.getSessionMaTk,
+          matk: this.propMaTK,
         },
       })
       .then((res) => {
@@ -50,17 +47,4 @@ export default class TestTranscript extends Vue {
 }
 </script>
 
-<style>
-#tableTest {
-  margin: 0 auto;
-}
-#tableTest td,
-#tableTest th {
-  border: 1px solid silver;
-}
-#tableTest th {
-  color: white;
-  padding: 0 20px;
-  background-color: palevioletred;
-}
-</style>
+<style></style>

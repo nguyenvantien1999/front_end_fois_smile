@@ -32,7 +32,7 @@
           />
         </div>
         <div class="d-flex justify-content-center mt-3 login_container">
-          <button class="btn login_btn" @click="dangnhap">Đăng nhập</button>
+          <input type="button" class="btn login_btn" @click="dangnhap" value="Đăng nhập"/>
         </div>
       </form>
     </div>
@@ -65,7 +65,6 @@ export default class LoginAdmin extends Vue {
   get getAccount() {
     return loginAdminStore.getStateAccAdmin;
   }
-
   async dangnhap() {
     await loginAdminStore.getAccAdminApi({
       user: this.getUsername,
@@ -75,6 +74,7 @@ export default class LoginAdmin extends Vue {
       alert(
         "Tài khoản: " + this.getAccount.username + " đăng nhập thành công !!!"
       );
+      window.location.reload();
     } else alert("Đăng nhập thất bại, có thể tài khoản bạn không đủ quyền truy cập.");
   }
 }

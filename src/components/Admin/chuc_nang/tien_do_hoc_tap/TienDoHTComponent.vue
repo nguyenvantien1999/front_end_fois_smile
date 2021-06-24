@@ -77,21 +77,21 @@ export default class TienDoHT extends Vue {
   private clickNav(nav: number) {
     this.$emit("nav", nav);
   }
-  private getDateOfBirth(ngaysinh: string) {
-    if (ngaysinh != null) {
-      let date = new Date(ngaysinh);
-      return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-    } else {
-      return "Chưa xách định";
-    }
-  }
+  // private getDateOfBirth(ngaysinh: string) {
+  //   if (ngaysinh != null) {
+  //     let date = new Date(ngaysinh);
+  //     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  //   } else {
+  //     return "Chưa xách định";
+  //   }
+  // }
   private showCT(matk: any) {
     this.matk = matk;
   }
   async progressAPI(matk: any) {
     let tiendo: never[] = [];
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/getAll", {
+      .get("http://localhost:3000/progress/getAll", {
         params: {
           matk: matk,
         },
@@ -103,7 +103,7 @@ export default class TienDoHT extends Vue {
   }
 
   beforeCreate() {
-    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor").then((res) => {
+    axios.get("http://localhost:3000/account/getAllHVInfor").then((res) => {
       res.data.forEach(async (info: { matt: any; matk: any }) => {
         info.matt = await this.progressAPI(info.matk);
       });

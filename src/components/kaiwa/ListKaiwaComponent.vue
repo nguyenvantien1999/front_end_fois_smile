@@ -35,7 +35,7 @@ export default class ListKaiwa extends Vue {
   }
 
   async created() {
-    await axios.get("https://backend-fois-smile.herokuapp.com/kaiwa").then((res) => {
+    await axios.get("http://localhost:3000/kaiwa").then((res) => {
       this.listKaiwa = res.data;
     });
   }

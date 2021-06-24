@@ -35,7 +35,7 @@ export default class ListTest extends Vue {
   }
 
   async created() {
-    await axios.get("https://backend-fois-smile.herokuapp.com/test").then((res) => {
+    await axios.get("http://localhost:3000/test").then((res) => {
       this.test = res.data;
     });
   }

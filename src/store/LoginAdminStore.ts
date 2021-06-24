@@ -20,11 +20,14 @@ export default class LoginAdminStore extends VuexModule {
   get getSessionMaTkAdmin() {
     return sessionStorage.getItem("matkadmin");
   }
+  get getSessionLoaiTkAdmin() {
+    return sessionStorage.getItem("loaitkadmin");
+  }
 
   @Action
   async getAccAdminApi(acc: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/admin", {
+      .get("http://localhost:3000/account/admin", {
         params: {
           username: acc.user,
           password: acc.pass,
@@ -37,7 +40,7 @@ export default class LoginAdminStore extends VuexModule {
   @Action
   async getAccAdminInforApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/infor", {
+      .get("http://localhost:3000/account/infor", {
         params: {
           matk: this.getSessionMaTkAdmin,
         },
@@ -49,7 +52,7 @@ export default class LoginAdminStore extends VuexModule {
   @Action
   async getAccHVInforApi(matk: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/infor", {
+      .get("http://localhost:3000/account/infor", {
         params: {
           matk: matk,
         },
@@ -64,8 +67,9 @@ export default class LoginAdminStore extends VuexModule {
     this.stateAccAdmin = payload;
     if (payload != "") {
       sessionStorage.setItem("matkadmin", payload.matk);
-      localStorage.setItem("userAdmin", payload.username);
-      localStorage.setItem("passAdmin", payload.password);
+      sessionStorage.setItem("loaitkadmin", payload.loaitk);
+      // localStorage.setItem("userAdmin", payload.username);
+      // localStorage.setItem("passAdmin", payload.password);
     }
   }
   @Mutation

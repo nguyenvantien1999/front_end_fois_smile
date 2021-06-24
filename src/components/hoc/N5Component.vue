@@ -1,7 +1,8 @@
 <template>
   <div>
+    <find-lesson @selectBH="handleEvent" @selectMaBH="handleEvent1"/>
     <div id="bodyN5" class="container d-flex">
-      <listBH @selectBH="handleEvent" @selectMaBH="handleEvent1" />
+      <listBH :propBH="contentBH" :propProgress="getProgressOfFind" @selectBH="handleEvent" @selectMaBH="handleEvent1" />
       <div id="noiDungBH">
         <alphabet v-show="getContentBH == 0" />
         <lesson
@@ -19,12 +20,14 @@ import { Component, Vue } from "vue-property-decorator";
 import ListBH from "./ListBHComponent.vue";
 import Alphabet from "./alphabet/AlphabetComponent.vue";
 import Lesson from "./LessonComponent.vue";
+import FindLesson from "./find_lesson/FindLessonComponent.vue";
 
 @Component({
   components: {
     ListBH,
     Alphabet,
     Lesson,
+    FindLesson,
   },
 })
 export default class N5 extends Vue {
