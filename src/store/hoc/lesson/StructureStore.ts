@@ -13,7 +13,7 @@ export default class StructureStore extends VuexModule {
   @Action
   async getStructureApi(manp: string) {
     await axios
-      .get("http://localhost:3000/structure", {
+      .get("https://backend-fois-smile.herokuapp.com/structure", {
         params: {
           manp: manp,
         },

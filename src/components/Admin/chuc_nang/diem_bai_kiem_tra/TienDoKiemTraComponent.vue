@@ -90,7 +90,7 @@ export default class TienDoKiemTra extends Vue {
     let tiendo: never[] = [];
     if (matk != null) {
       await axios
-        .get("http://localhost:3000/testTranscript/get", {
+        .get("https://backend-fois-smile.herokuapp.com/testTranscript/get", {
           params: {
             matk: matk,
           },
@@ -104,7 +104,7 @@ export default class TienDoKiemTra extends Vue {
 
   beforeCreate() {
     axios
-      .get("http://localhost:3000/account/getAllHVInfor")
+      .get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor")
       .then((res) => {
         res.data.forEach(
           async (info: {

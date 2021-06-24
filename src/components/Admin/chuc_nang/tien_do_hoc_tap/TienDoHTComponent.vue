@@ -91,7 +91,7 @@ export default class TienDoHT extends Vue {
   async progressAPI(matk: any) {
     let tiendo: never[] = [];
     await axios
-      .get("http://localhost:3000/progress/getAll", {
+      .get("https://backend-fois-smile.herokuapp.com/progress/getAll", {
         params: {
           matk: matk,
         },
@@ -103,7 +103,7 @@ export default class TienDoHT extends Vue {
   }
 
   beforeCreate() {
-    axios.get("http://localhost:3000/account/getAllHVInfor").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor").then((res) => {
       res.data.forEach(async (info: { matt: any; matk: any }) => {
         info.matt = await this.progressAPI(info.matk);
       });

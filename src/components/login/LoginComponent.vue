@@ -261,7 +261,7 @@ export default class Login extends Vue {
       } else {
         this.loading = true;
         await axios
-          .get("http://localhost:3000/account/regis", {
+          .get("https://backend-fois-smile.herokuapp.com/account/regis", {
             params: {
               record: {
                 username: this.getUsername,
