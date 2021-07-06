@@ -69,7 +69,7 @@ export default class ThemVD extends Vue {
   addVD() {
     if (this.getTenVD != "" && this.getNghia != "") {
       axios
-        .get("http://localhost:3000/example/add", {
+        .get("https://backend-fois-smile.herokuapp.com/example/add", {
           params: {
             mavd: this.getMaCT,
             tenvd: this.getTenVD,

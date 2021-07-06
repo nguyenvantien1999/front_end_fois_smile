@@ -122,7 +122,7 @@ export default class QuestionTest extends Vue {
     this.answer = [];
     this.nopbai = false;
     axios
-      .get("http://localhost:3000/childquestion", {
+      .get("https://backend-fois-smile.herokuapp.com/childquestion", {
         params: {
           mach: this.propMaCH,
         },
@@ -144,7 +144,7 @@ export default class QuestionTest extends Vue {
   async getCorrectAnswerApi(mach: string) {
     let dapandung: never[] = [];
     await axios
-      .get("http://localhost:3000/correctanswer", {
+      .get("https://backend-fois-smile.herokuapp.com/correctanswer", {
         params: {
           machc: mach,
         },

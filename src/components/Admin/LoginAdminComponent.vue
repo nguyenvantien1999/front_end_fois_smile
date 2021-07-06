@@ -74,7 +74,7 @@ export default class LoginAdmin extends Vue {
       alert(
         "Tài khoản: " + this.getAccount.username + " đăng nhập thành công !!!"
       );
-      window.location.reload();
+      this.$emit("setDN", true);
     } else alert("Đăng nhập thất bại, có thể tài khoản bạn không đủ quyền truy cập.");
   }
 }

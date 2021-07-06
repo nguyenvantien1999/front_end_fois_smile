@@ -100,7 +100,7 @@ export default class ThemCTL extends Vue {
     if (this.getTenDA != "") {
       if (this.uploadImg == 100) {
         axios
-          .get("http://localhost:3000/answer/add", {
+          .get("https://backend-fois-smile.herokuapp.com/answer/add", {
             params: {
               mada: this.getMaDA,
               tenda: this.getTenDA,

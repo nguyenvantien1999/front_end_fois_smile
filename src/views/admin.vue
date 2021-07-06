@@ -1,7 +1,8 @@
 <template>
   <div>
-    <login-admin v-if="getAccAdmin == null" />
+    <login-admin @setDN="setDN" v-if="getAccAdmin == false" />
     <admin-component v-else />
+    admin: {{getAccAdmin}}
   </div>
 </template>
 
@@ -9,10 +10,6 @@
 import { Component, Vue } from "vue-property-decorator";
 import LoginAdmin from "../components/Admin/LoginAdminComponent.vue";
 import AdminComponent from "../components/Admin/AdminComponent.vue";
-import LoginAdminStore from "../store/LoginAdminStore";
-import { getModule } from "vuex-module-decorators";
-
-const loginAdminStore = getModule(LoginAdminStore);
 
 @Component({
   components: {
@@ -21,9 +18,14 @@ const loginAdminStore = getModule(LoginAdminStore);
   },
 })
 export default class Admin extends Vue {
+  private logged = false;
   get getAccAdmin() {
-    return loginAdminStore.getSessionMaTkAdmin;
+    return this.logged;
   }
+  setDN(data: any){
+    this.logged = data;
+  }
+
   created() {
     this.$emit("admin", true);
   }

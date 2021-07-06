@@ -147,7 +147,7 @@ export default class SuaCHC extends Vue {
     if (this.propCHC.tenchc!= "" && this.propCHC.maloaich!= "") {
       if (this.uploadImg == 100 && this.uploadAudio == 100) {
         axios
-          .get("http://localhost:3000/childquestion/edit", {
+          .get("https://backend-fois-smile.herokuapp.com/childquestion/edit", {
             params: {
               machc: this.propCHC.machc,
               tenchc: this.propCHC.tenchc,

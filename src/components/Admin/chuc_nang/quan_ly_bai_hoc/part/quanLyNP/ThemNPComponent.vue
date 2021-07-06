@@ -52,7 +52,7 @@ export default class ThemNP extends Vue {
   addNP() {
     if (this.getTenNP != "") {
       axios
-        .get("http://localhost:3000/grammar/add", {
+        .get("https://backend-fois-smile.herokuapp.com/grammar/add", {
           params: {
             manp: this.getMaNP,
             tennp: this.getTenNP,

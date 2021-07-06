@@ -22,7 +22,7 @@ export default class KanjiStore extends VuexModule {
 
   @Action
   async getKanjiApi() {
-    await axios.get("http://localhost:3000/word/kanji").then((res) => {
+    await axios.get("https://backend-fois-smile.herokuapp.com/word/kanji").then((res) => {
       this.context.commit("setBangKanji", res.data);
     });
   }
@@ -30,7 +30,7 @@ export default class KanjiStore extends VuexModule {
   @Action
   async getOnyomiApi(machu: string) {
     await axios
-      .get("http://localhost:3000/kanji_syllables/on", {
+      .get("https://backend-fois-smile.herokuapp.com/kanji_syllables/on", {
         params: {
           machu: machu,
         },
@@ -43,7 +43,7 @@ export default class KanjiStore extends VuexModule {
   @Action
   async getKunyomiApi(machu: string) {
     await axios
-      .get("http://localhost:3000/kanji_syllables/kun", {
+      .get("https://backend-fois-smile.herokuapp.com/kanji_syllables/kun", {
         params: {
           machu: machu,
         },

@@ -68,7 +68,7 @@ export default class SuaCT extends Vue {
   editCT() {
     if ((this.propStructure.tenct != "", this.propStructure.nghia != "")) {
       axios
-        .get("http://localhost:3000/structure/edit", {
+        .get("https://backend-fois-smile.herokuapp.com/structure/edit", {
           params: {
             mact: this.propStructure.mact,
             tenct: this.propStructure.tenct,

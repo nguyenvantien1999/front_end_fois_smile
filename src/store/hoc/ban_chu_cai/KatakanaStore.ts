@@ -18,7 +18,7 @@ export default class KatakanaStore extends VuexModule {
   @Action
   async getBDKaTaApi() {
     await axios
-      .get("http://localhost:3000/word/katakana/chudon")
+      .get("https://backend-fois-smile.herokuapp.com/word/katakana/chudon")
       .then((res) => {
         this.context.commit("setBangKatakanaDon", res.data);
       });
@@ -27,7 +27,7 @@ export default class KatakanaStore extends VuexModule {
   @Action
   async getBKKataApi() {
     await axios
-      .get("http://localhost:3000/word/katakana/chukep")
+      .get("https://backend-fois-smile.herokuapp.com/word/katakana/chukep")
       .then((res) => {
         this.context.commit("setBangKatakanakep", res.data);
       });

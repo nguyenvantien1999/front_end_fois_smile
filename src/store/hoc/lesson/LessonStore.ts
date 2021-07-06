@@ -20,7 +20,7 @@ export default class LessonStore extends VuexModule {
 
   @Action
   async getLessonApi() {
-    await axios.get("http://localhost:3000/lesson").then((res) => {
+    await axios.get("https://backend-fois-smile.herokuapp.com/lesson").then((res) => {
       this.context.commit("setLesson", res.data);
     });
   }
@@ -28,7 +28,7 @@ export default class LessonStore extends VuexModule {
   @Action
   async getProgressAPI() {
     await axios
-      .get("http://localhost:3000/progress/getAllMaBH", {
+      .get("https://backend-fois-smile.herokuapp.com/progress/getAllMaBH", {
         params: {
           matk: loginStore.getSessionMaTk,
         },

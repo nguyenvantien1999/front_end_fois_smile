@@ -64,7 +64,7 @@ export default class SuaTV extends Vue {
   async editTuVung() {
     if (this.propVob.tentv != "" && this.propVob.nghia != "") {
       axios
-        .get("http://localhost:3000/vocabulary/edit", {
+        .get("https://backend-fois-smile.herokuapp.com/vocabulary/edit", {
           params: {
             matv: this.propVob.matv,
             tentv: this.propVob.tentv,
