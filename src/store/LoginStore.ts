@@ -39,12 +39,20 @@ export default class LoginStore extends VuexModule {
     }
   }
 
+  get getSessionLoaiTK() {
+    if (localStorage.getItem("loaitk") != undefined) {
+      return localStorage.getItem("loaitk");
+    } else {
+      return sessionStorage.getItem("loaitk");
+    }
+  }
+
   @Action
   async updateAccountApi() {
     if (this.getStateAccount != "") {
       const acc: any = this.getStateAccount;
       await axios
-        .get("https://backend-fois-smile.herokuapp.com/account/update", {
+        .get("https://backend-fois-smile.herokuapp.comaccount/update", {
           params: {
             matk: acc.matk,
             username: acc.username,
@@ -64,7 +72,7 @@ export default class LoginStore extends VuexModule {
   async updateAccountInforApi() {
     const acc: any = this.getAccountInfor;
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/info/update", {
+      .get("https://backend-fois-smile.herokuapp.comaccount/info/update", {
         params: {
           matt: acc.matt,
           hoten: acc.hoten,
@@ -82,7 +90,7 @@ export default class LoginStore extends VuexModule {
   @Action
   async getAccountApi(acc: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account", {
+      .get("https://backend-fois-smile.herokuapp.comaccount", {
         params: {
           username: acc.user,
           password: acc.pass,
@@ -96,7 +104,7 @@ export default class LoginStore extends VuexModule {
   @Action
   async getAccountInforApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/infor", {
+      .get("https://backend-fois-smile.herokuapp.comaccount/infor", {
         params: {
           matk: this.getSessionMaTk,
         },
@@ -114,6 +122,7 @@ export default class LoginStore extends VuexModule {
       sessionStorage.setItem("matk", payload.matk);
       sessionStorage.setItem("username", payload.username);
       sessionStorage.setItem("password", payload.password);
+      sessionStorage.setItem("loaitk", payload.loaitk)
     }
   }
 

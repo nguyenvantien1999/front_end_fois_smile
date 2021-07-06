@@ -4,7 +4,7 @@
       <div id="findLesson">
         <b-form-input
           id="inputFindLesson"
-          placeholder="Nhập số bài hoặc tên bài học, vd: bài 1 hoặc người & ngôn ngữ"
+          placeholder="vd: bài 1, từ vựng 1, ngữ pháp 1, bài tập 1 hoặc người & ngôn ngữ"
           v-model="findText"
         ></b-form-input>
         <input
@@ -57,7 +57,7 @@ export default class FindLesson extends Vue {
 
   async insertProgress(matk: any, mabh: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/insert", {
+      .get("https://backend-fois-smile.herokuapp.comprogress/insert", {
         params: {
           tuvung: true,
           matk: matk,
@@ -82,6 +82,7 @@ export default class FindLesson extends Vue {
         if (this.getProgress.length >= vitri - 1) {
           this.$emit("selectBH", vitri);
           this.$emit("selectMaBH", lesson.mabh);
+          this.$emit("selectPart", this.getFindText);
           await this.insertProgress(loginStore.getSessionMaTk, lesson.mabh);
           await lessonStore.getProgressAPI();
           this.infoSearch = "";

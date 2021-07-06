@@ -105,7 +105,7 @@ export default class Reply extends Vue {
 
   get getReplyAPI() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/reply/getreply", {
+      .get("https://backend-fois-smile.herokuapp.comreply/getreply", {
         params: {
           mabl: this.propMaBL,
         },
@@ -120,7 +120,7 @@ export default class Reply extends Vue {
   }
   async addReply() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/reply/addreply", {
+      .get("https://backend-fois-smile.herokuapp.comreply/addreply", {
         params: {
           ndrep: this.getReply,
           thoigian: Date.now(),
@@ -142,7 +142,7 @@ export default class Reply extends Vue {
     }
   }
   connect() {
-    this.stompClient = Stomp.over(new SockJS("https://backend-fois-smile.herokuapp.com/websocket"));
+    this.stompClient = Stomp.over(new SockJS("https://backend-fois-smile.herokuapp.comwebsocket"));
     this.stompClient.connect({}, (frame: any) => {
       this.stompClient.subscribe("/topic/getRepSocket", (tick: any) => {
         this.replyList = JSON.parse(tick.body);

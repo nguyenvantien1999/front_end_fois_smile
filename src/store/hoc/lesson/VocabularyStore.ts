@@ -13,7 +13,7 @@ export default class VocabularyStore extends VuexModule {
   @Action
   async getVocabularyApi(mabh: string) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/vocabulary", {
+      .get("https://backend-fois-smile.herokuapp.comvocabulary", {
         params: {
           mabh: mabh,
         },

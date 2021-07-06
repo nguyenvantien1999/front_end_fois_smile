@@ -8,7 +8,7 @@
         <audio
           class="mb-3"
           id="audioKaiwa"
-          :src="require('../../assets/audio/kaiwa/' + kw.linkaudio)"
+          :src="kw.linkaudio"
           controls
         ></audio>
       </tr>
@@ -24,7 +24,7 @@
       <img
         width="500px"
         height="auto"
-        :src="require('../../assets/images/kaiwa/' + kw.hinhanh)"
+        :src="kw.hinhanh"
         alt="logo"
         v-for="(kw, i) in getNDKW"
         :key="i"
@@ -63,7 +63,7 @@ export default class KaiwaContent extends Vue {
   }
   get getKWApi() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/kaiwa/content", {
+      .get("https://backend-fois-smile.herokuapp.comkaiwa/content", {
         params: {
           maht: this.getIDKW,
         },

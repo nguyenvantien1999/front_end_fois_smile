@@ -21,6 +21,12 @@
         <h4><b>Điểm bài kiểm tra</b></h4>
       </div>
     </div>
+    <div class="justify-content-center d-flex mt-5 mb-5">
+      <div class="navAdmin text-center" @click="clickNav(5)">
+        <h1><i class="fa fa-book" aria-hidden="true"></i></h1>
+        <h4><b>Quản lý <br> bài học</b></h4>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -17,15 +17,15 @@
         <td>{{ getDateOfBirth(hv.ngaysinh) }}</td>
         <td>
           {{
-            hv.gioitinh == 1 ? "Nam" : hv.gioitinh == 0 ? "Nữ" : "Chưa xác định"
+            hv.gioitinh == 1 ? "Nam" : hv.gioitinh == 0 ? "Nữ" : ""
           }}
         </td>
-        <td>{{ hv.diachi == null ? "Chưa xác định" : hv.diachi }}</td>
+        <td>{{ hv.diachi == null ? "" : hv.diachi }}</td>
       </tr>
     </table>
-    <p class="text-right backAdmin" @click="clickNav(0)">
+    <p class="text-right backAdmin">
       <i class="fa fa-reply text-danger" aria-hidden="true"></i
-      ><small><b class="text-danger"> Trở về</b></small>
+      ><small><b class="text-danger" @click="clickNav(0)"> Trở về</b></small>
     </p>
   </div>
 </template>
@@ -49,11 +49,11 @@ export default class DSHocVien extends Vue {
       let date = new Date(ngaysinh);
       return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
     } else {
-      return "Chưa xách định";
+      return "";
     }
   }
   created() {
-    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHVInfor").then((res) => {
       this.inforHV = res.data;
     });
   }

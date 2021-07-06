@@ -107,7 +107,7 @@ export default class Exercise extends Vue {
     this.showDA = false;
     this.viTriCH = 0;
     axios
-      .get("https://backend-fois-smile.herokuapp.com/question", {
+      .get("https://backend-fois-smile.herokuapp.comquestion", {
         params: {
           mabai: this.getMaBT,
         },

@@ -37,6 +37,9 @@
               }}</b></router-link
             >
             <a class="text-danger ml-2" href="/" @click="logOut">đăng xuất</a>
+            <router-link class="text-warning" to="/admin" v-if="getLoaiTK != 3"
+              ><b> | Quản trị</b></router-link
+            >
           </p>
           <login />
         </div>
@@ -148,6 +151,10 @@ export default class Header extends Vue {
 
   get getAccountInfor() {
     return loginStore.getAccountInfor;
+  }
+
+  get getLoaiTK(){
+    return loginStore.getSessionLoaiTK;
   }
 
   get getAccountInforApi() {

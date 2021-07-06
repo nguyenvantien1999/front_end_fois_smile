@@ -20,7 +20,9 @@
           </tr>
         </table>
         <div id="divAddTk">
-          <button id="addTK" class="btn" @click="$bvModal.show('addTaiKhoan')"><i class="fa fa-plus" aria-hidden="true"></i> <b>Tài khoản</b></button>
+          <button id="addTK" class="btn" @click="$bvModal.show('addTaiKhoan')">
+            <i class="fa fa-plus" aria-hidden="true"></i> <b>Tài khoản</b>
+          </button>
         </div>
       </div>
       <table id="tableTest" class="text-center">
@@ -29,6 +31,7 @@
           <th>Tên tài khoản</th>
           <th>Thời gian đăng nhập</th>
           <th>Chi tiết</th>
+          <th>Sửa</th>
           <th>Xóa</th>
         </tr>
         <tr
@@ -50,6 +53,9 @@
             ></i>
           </td>
           <td>
+            <i class="fa fa-pencil text-danger icon" @click="$bvModal.show('editTK'), setTK(tk)" aria-hidden="true"></i>
+          </td>
+          <td>
             <i
               @click="removeTK(tk.matk, tk.username)"
               class="fa fa-trash text-danger icon"
@@ -58,13 +64,14 @@
           </td>
         </tr>
       </table>
-      <p class="text-right backAdmin" @click="clickNav(0)">
+      <p class="text-right backAdmin" >
         <i class="fa fa-reply text-danger" aria-hidden="true"></i
-        ><small><b class="text-danger"> Trở về</b></small>
+        ><small><b class="text-danger" @click="clickNav(0)"> Trở về</b></small>
       </p>
     </div>
     <chi-tiet-tk-hv :propMaTK="getMaTk" />
     <them-tk/>
+    <edit-tk :propTK="getTK" @reload="reload"/>
   </div>
 </template>
 
@@ -74,20 +81,32 @@ import axios from "axios";
 import ChiTietTkHv from "./ChiTietTKHVComponent.vue";
 import lodash from "lodash";
 import ThemTk from "./ThemTKComponent.vue";
+import EditTk from "./EditTKComponent.vue";
 
 @Component({
   components: {
     ChiTietTkHv,
     ThemTk,
+    EditTk,
   },
 })
 export default class DSTaiKhoanHV extends Vue {
   private tkHocVien = "";
   private matk = "";
+  private tk = "";
+
+  get getTK(){
+    return this.tk;
+  }
 
   get getMaTk() {
     return this.matk;
   }
+
+  setTK(tk: any) {
+    this.tk = tk;
+  }
+
   get getTKHocVien() {
     return this.tkHocVien;
   }
@@ -114,26 +133,27 @@ export default class DSTaiKhoanHV extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa tài khoản: ${user}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/account/removeTKHV", {
+        .get("https://backend-fois-smile.herokuapp.comaccount/removeTKHV", {
           params: {
             matk: matk,
           },
         })
         .then((res) => {
-          axios
-            .get("https://backend-fois-smile.herokuapp.com/account/getAllHV")
-            .then((res) => {
-              this.tkHocVien = res.data;
-            });
+          axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHV").then((res) => {
+            this.tkHocVien = res.data;
+          });
         });
     }
   }
   created() {
-    axios
-      .get("https://backend-fois-smile.herokuapp.com/account/getAllHV")
-      .then((res) => {
-        this.tkHocVien = res.data;
-      });
+    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHV").then((res) => {
+      this.tkHocVien = res.data;
+    });
+  }
+  reload(){
+    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHV").then((res) => {
+      this.tkHocVien = res.data;
+    });
   }
 }
 </script>
@@ -155,12 +175,12 @@ export default class DSTaiKhoanHV extends Vue {
 .tren30ngay {
   background-color: tomato;
 }
-#addTK{
+#addTK {
   background-color: #ff1d5e;
   color: white;
   font-size: small;
 }
-#divAddTk{
+#divAddTk {
   margin-left: auto;
 }
 </style>

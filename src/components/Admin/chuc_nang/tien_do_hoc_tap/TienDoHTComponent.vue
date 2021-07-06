@@ -40,9 +40,9 @@
         </td>
       </tr>
     </table>
-    <p class="text-right backAdmin" @click="clickNav(0)">
+    <p class="text-right backAdmin">
       <i class="fa fa-reply text-danger" aria-hidden="true"></i
-      ><small><b class="text-danger"> Trở về</b></small>
+      ><small><b class="text-danger" @click="clickNav(0)"> Trở về</b></small>
     </p>
     <chi-tiet-td :propMaTK="getMaTK" />
   </div>
@@ -91,7 +91,7 @@ export default class TienDoHT extends Vue {
   async progressAPI(matk: any) {
     let tiendo: never[] = [];
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/getAll", {
+      .get("https://backend-fois-smile.herokuapp.comprogress/getAll", {
         params: {
           matk: matk,
         },
@@ -103,7 +103,7 @@ export default class TienDoHT extends Vue {
   }
 
   beforeCreate() {
-    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHVInfor").then((res) => {
       res.data.forEach(async (info: { matt: any; matk: any }) => {
         info.matt = await this.progressAPI(info.matk);
       });

@@ -1,13 +1,14 @@
 <template>
   <div>
-    <find-lesson @selectBH="handleEvent" @selectMaBH="handleEvent1"/>
+    <find-lesson @selectBH="handleEvent" @selectMaBH="handleEvent1" @selectPart="selectPart"/>
     <div id="bodyN5" class="container d-flex">
-      <listBH :propBH="contentBH" :propProgress="getProgressOfFind" @selectBH="handleEvent" @selectMaBH="handleEvent1" />
+      <listBH :propBH="contentBH" @selectBH="handleEvent" @selectMaBH="handleEvent1" />
       <div id="noiDungBH">
         <alphabet v-show="getContentBH == 0" />
         <lesson
           :propContent="getContentBH"
           :propMaBH="getMaBH"
+          :propPart="getPartFind"
           v-show="getContentBH > 0"
         />
       </div>
@@ -34,7 +35,11 @@ export default class N5 extends Vue {
   private contentBH = 0;
   private maBH = "";
   private isLoaded = false;
+  private partFind = "";
 
+  get getPartFind(){
+    return this.partFind;
+  }
   get getIsLoaded() {
     return this.isLoaded;
   }
@@ -49,6 +54,9 @@ export default class N5 extends Vue {
   }
   handleEvent1(data: any) {
     this.maBH = data;
+  }
+  selectPart(data: any){
+    this.partFind = data;
   }
 }
 </script>

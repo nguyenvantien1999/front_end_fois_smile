@@ -127,7 +127,7 @@ export default class ThemTK extends Vue {
         alert("Mật khẩu không đồng nhất");
       } else {
         await axios
-          .get("https://backend-fois-smile.herokuapp.com/account/regis", {
+          .get("https://backend-fois-smile.herokuapp.comaccount/regis", {
             params: {
               record: {
                 username: this.getUsername,
@@ -139,10 +139,10 @@ export default class ThemTK extends Vue {
           })
           .then((res) => {
             if (res.data == true) {
-              alert("Đăng ký thành công");
+              alert("Thêm thành công");
               this.password = "";
             } else {
-              alert("Đăng ký thất bại, tài khoản đã tồn tại");
+              alert("Thêm thất bại, tài khoản đã tồn tại");
             }
           });
       }

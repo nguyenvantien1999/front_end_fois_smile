@@ -41,9 +41,9 @@
         </td>
       </tr>
     </table>
-    <p class="text-right backAdmin" @click="clickNav(0)">
+    <p class="text-right backAdmin">
       <i class="fa fa-reply text-danger" aria-hidden="true"></i
-      ><small><b class="text-danger"> Trở về</b></small>
+      ><small><b class="text-danger" @click="clickNav(0)"> Trở về</b></small>
     </p>
     <chi-tiet-kiem-tra :propMaTK="getMaTK" />
   </div>
@@ -75,7 +75,8 @@ export default class TienDoKiemTra extends Vue {
     return this.matk;
   }
   get getInforHV() {
-    return lodash.sortBy(this.inforHV, "diachi");
+    return lodash.orderBy(this.inforHV, "diachi", 'desc');
+    // sortBy(this.inforHV,'desc', "diachi");
   }
 
   private clickNav(nav: number) {
@@ -90,7 +91,7 @@ export default class TienDoKiemTra extends Vue {
     let tiendo: never[] = [];
     if (matk != null) {
       await axios
-        .get("https://backend-fois-smile.herokuapp.com/testTranscript/get", {
+        .get("https://backend-fois-smile.herokuapp.comtestTranscript/get", {
           params: {
             matk: matk,
           },
@@ -103,23 +104,16 @@ export default class TienDoKiemTra extends Vue {
   }
 
   beforeCreate() {
-    axios
-      .get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor")
-      .then((res) => {
-        res.data.forEach(
-          async (info: {
-            matt: any;
-            matk: any;
-            gioitinh: any;
-            diachi: any;
-          }) => {
-            info.matt = await this.transcriptAPI(info.matk); // bảng điểm theo mã tài khoản
-            info.gioitinh = this.lengthTestTranscript(info.matt); // số lượng bài kiểm tra đã làm
-            info.diachi = this.mediumScore(info.matt); // điểm trung bình
-          }
-        );
-        this.inforHV = res.data;
-      });
+    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHVInfor").then((res) => {
+      res.data.forEach(
+        async (info: { matt: any; matk: any; gioitinh: any; diachi: any }) => {
+          info.matt = await this.transcriptAPI(info.matk); // bảng điểm theo mã tài khoản
+          info.gioitinh = this.lengthTestTranscript(info.matt); // số lượng bài kiểm tra đã làm
+          info.diachi = this.mediumScore(info.matt); // điểm trung bình
+        }
+      );
+      this.inforHV = res.data;
+    });
   }
 
   lengthTestTranscript(info: any) {
@@ -134,8 +128,13 @@ export default class TienDoKiemTra extends Vue {
   mediumScore(info: any) {
     let score = 0;
     info.forEach((i: { diem: any }) => {
-      score += i.diem;
+      if (i.diem != null) {
+        score += i.diem;
+      }
     });
+    if(info.length == 0){
+      return 0;
+    }
     return score / info.length;
   }
 }

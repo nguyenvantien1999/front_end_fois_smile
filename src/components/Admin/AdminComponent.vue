@@ -35,6 +35,7 @@
       <ds-hoc-vien v-if="getNavAdmin == 2" @nav="setNav"/>
       <tien-do-ht v-if="getNavAdmin == 3" @nav="setNav"/>
       <tien-do-kiem-tra v-if="getNavAdmin == 4" @nav="setNav"/>
+      <quan-ly-bh v-if="getNavAdmin == 5" @nav="setNav"/>
     </div>
   </div>
 </template>
@@ -48,6 +49,7 @@ import DsTaiKhoanHv from "./chuc_nang/tai_khoan_hoc_vien/DSTaiKhoanHVComponent.v
 import DsHocVien from "./chuc_nang/danh_sach_hoc_vien/DSHocVienComponent.vue";
 import TienDoHt from "./chuc_nang/tien_do_hoc_tap/TienDoHTComponent.vue";
 import TienDoKiemTra from "./chuc_nang/diem_bai_kiem_tra/TienDoKiemTraComponent.vue";
+import QuanLyBh from "./chuc_nang/quan_ly_bai_hoc/QuanLyBHComponent.vue";
 
 const loginAdminStore = getModule(LoginAdminStore);
 
@@ -58,6 +60,7 @@ const loginAdminStore = getModule(LoginAdminStore);
     DsHocVien,
     TienDoHt,
     TienDoKiemTra,
+    QuanLyBh,
   },
 })
 export default class AdminComponent extends Vue {

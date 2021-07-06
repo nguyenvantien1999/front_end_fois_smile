@@ -21,7 +21,7 @@
               height="150px"
               class="img-thumbnail"
               v-if="a.hinhanh != undefined"
-              :src="require('../../../assets/images/answer/' + a.hinhanh)"
+              :src="a.hinhanh"
               alt=""
             />
           </label>
@@ -78,7 +78,7 @@ export default class Question extends Vue {
     this.answerQuestion = [];
     this.correctAnswer = [];
     axios
-      .get("https://backend-fois-smile.herokuapp.com/childquestion", {
+      .get("https://backend-fois-smile.herokuapp.comchildquestion", {
         params: {
           mach: this.propMaCH,
         },
@@ -95,7 +95,7 @@ export default class Question extends Vue {
 
   getAnswerApi(machc: any) {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/answer", {
+      .get("https://backend-fois-smile.herokuapp.comanswer", {
         params: {
           machc: machc,
         },
@@ -108,7 +108,7 @@ export default class Question extends Vue {
 
   getCorrectAnswerApi(machc: string) {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/correctanswer", {
+      .get("https://backend-fois-smile.herokuapp.comcorrectanswer", {
         params: {
           machc: machc,
         },

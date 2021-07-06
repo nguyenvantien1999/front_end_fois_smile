@@ -16,10 +16,7 @@
           getListening[getViTriCH] != undefined &&
           getListening[getViTriCH].hinhanh != undefined
         "
-        :src="
-          require('../../../assets/images/question/' +
-            getListening[getViTriCH].hinhanh)
-        "
+        :src="getListening[getViTriCH].hinhanh"
         alt=""
       />
     </div>
@@ -31,10 +28,7 @@
           getListening[getViTriCH] != undefined &&
           getListening[getViTriCH].linkaudio != undefined
         "
-        :src="
-          require('../../../assets/audio/question/' +
-            getListening[getViTriCH].linkaudio)
-        "
+        :src="getListening[getViTriCH].linkaudio"
         controls
       ></audio>
     </div>
@@ -120,7 +114,7 @@ export default class Listening extends Vue {
     this.showDA = false;
     this.viTriCH = 0;
     axios
-      .get("https://backend-fois-smile.herokuapp.com/question", {
+      .get("https://backend-fois-smile.herokuapp.comquestion", {
         params: {
           mabai: this.getMaBN,
         },

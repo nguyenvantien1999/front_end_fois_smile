@@ -52,6 +52,8 @@ export default class LessonComponent extends Vue {
   propContent!: number;
   @Prop()
   propMaBH: any;
+  @Prop()
+  propPart: any;
   private lessonPart = ["Từ vựng", "Ngữ pháp", "Nghe", "Bài tập"];
   private selectLessonPart = 0;
 
@@ -61,6 +63,16 @@ export default class LessonComponent extends Vue {
   }
 
   get getLessonPart() {
+    if(this.propPart != null){
+      if(this.propPart.toLowerCase().indexOf('từ vựng') != -1) 
+        this.selectLessonPart = 0;
+      if(this.propPart.toLowerCase().indexOf('ngữ pháp') != -1) 
+        this.selectLessonPart = 1;
+      if(this.propPart.toLowerCase().indexOf('nghe') != -1) 
+        this.selectLessonPart = 2;
+      if(this.propPart.toLowerCase().indexOf('bài tập') != -1) 
+        this.selectLessonPart = 3; 
+    } 
     return this.selectLessonPart;
   }
 
@@ -88,7 +100,7 @@ export default class LessonComponent extends Vue {
 
   progressNP() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/updateNP", {
+      .get("https://backend-fois-smile.herokuapp.comprogress/updateNP", {
         params: {
           matk: loginStore.getSessionMaTk,
           mabh: this.propMaBH,
@@ -101,7 +113,7 @@ export default class LessonComponent extends Vue {
 
   progressNghe() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/updateNghe", {
+      .get("https://backend-fois-smile.herokuapp.comprogress/updateNghe", {
         params: {
           matk: loginStore.getSessionMaTk,
           mabh: this.propMaBH,
@@ -114,7 +126,7 @@ export default class LessonComponent extends Vue {
 
   progressBT() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/updateBT", {
+      .get("https://backend-fois-smile.herokuapp.comprogress/updateBT", {
         params: {
           matk: loginStore.getSessionMaTk,
           mabh: this.propMaBH,

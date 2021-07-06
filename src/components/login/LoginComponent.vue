@@ -236,6 +236,7 @@ export default class Login extends Vue {
           localStorage.setItem("matk", this.getAccount.matk);
           localStorage.setItem("username", this.getAccount.username);
           localStorage.setItem("password", this.getAccount.password);
+          localStorage.setItem("loaitk", this.getAccount.loaitk);
         }
         window.location.reload();
       } else {
@@ -261,7 +262,7 @@ export default class Login extends Vue {
       } else {
         this.loading = true;
         await axios
-          .get("https://backend-fois-smile.herokuapp.com/account/regis", {
+          .get("https://backend-fois-smile.herokuapp.comaccount/regis", {
             params: {
               record: {
                 username: this.getUsername,
