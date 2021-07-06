@@ -133,25 +133,25 @@ export default class DSTaiKhoanHV extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa tài khoản: ${user}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comaccount/removeTKHV", {
+        .get("https://backend-fois-smile.herokuapp.com/account/removeTKHV", {
           params: {
             matk: matk,
           },
         })
         .then((res) => {
-          axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHV").then((res) => {
+          axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHV").then((res) => {
             this.tkHocVien = res.data;
           });
         });
     }
   }
   created() {
-    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHV").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHV").then((res) => {
       this.tkHocVien = res.data;
     });
   }
   reload(){
-    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHV").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHV").then((res) => {
       this.tkHocVien = res.data;
     });
   }

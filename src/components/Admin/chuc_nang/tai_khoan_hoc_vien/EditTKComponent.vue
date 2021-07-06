@@ -85,7 +85,7 @@ export default class EditTK extends Vue {
   }
   async updateAccountApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comaccount/update", {
+      .get("https://backend-fois-smile.herokuapp.com/account/update", {
         params: {
           matk: this.propTK.matk,
           username: this.propTK.username,

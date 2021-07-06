@@ -84,7 +84,7 @@ export default class ThemTV extends Vue {
   async addTuVung() {
     if (this.getTenTV != "" && this.getNghia != "") {
       axios
-        .get("https://backend-fois-smile.herokuapp.comvocabulary/add", {
+        .get("https://backend-fois-smile.herokuapp.com/vocabulary/add", {
           params: {
             matv: this.getMaTV,
             tentv: this.getTenTV,

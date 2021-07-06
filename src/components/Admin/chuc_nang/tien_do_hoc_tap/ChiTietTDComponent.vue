@@ -67,7 +67,7 @@ export default class chiTietTD extends Vue {
   get progressAPI() {
     if (this.propMaTK != "") {
       axios
-        .get("https://backend-fois-smile.herokuapp.comprogress/getAll", {
+        .get("https://backend-fois-smile.herokuapp.com/progress/getAll", {
           params: {
             matk: this.propMaTK,
           },

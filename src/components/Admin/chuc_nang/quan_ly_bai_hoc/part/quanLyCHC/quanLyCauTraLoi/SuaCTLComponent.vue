@@ -81,7 +81,7 @@ export default class SuaCTL extends Vue {
     if (this.propAswer.tenda != "") {
       if (this.uploadImg == 100) {
         axios
-          .get("https://backend-fois-smile.herokuapp.comanswer/edit", {
+          .get("https://backend-fois-smile.herokuapp.com/answer/edit", {
             params: {
               mada: this.propAswer.mada,
               tenda: this.propAswer.tenda,

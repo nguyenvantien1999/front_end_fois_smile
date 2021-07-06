@@ -138,7 +138,7 @@ export default class QuanLyTV extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa từ vựng: ${tentv}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comvocabulary/remove", {
+        .get("https://backend-fois-smile.herokuapp.com/vocabulary/remove", {
           params: {
             matv: matv,
           },

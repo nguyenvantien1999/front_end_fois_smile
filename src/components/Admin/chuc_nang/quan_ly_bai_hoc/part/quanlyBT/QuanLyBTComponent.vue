@@ -26,7 +26,7 @@ export default class QuanLyBaiTap extends Vue {
 
   get getExerciseApi() {
     axios
-      .get("https://backend-fois-smile.herokuapp.comexercise", {
+      .get("https://backend-fois-smile.herokuapp.com/exercise", {
         params: {
           mabh: this.propBH,
         },

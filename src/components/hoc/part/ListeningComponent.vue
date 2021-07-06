@@ -114,7 +114,7 @@ export default class Listening extends Vue {
     this.showDA = false;
     this.viTriCH = 0;
     axios
-      .get("https://backend-fois-smile.herokuapp.comquestion", {
+      .get("https://backend-fois-smile.herokuapp.com/question", {
         params: {
           mabai: this.getMaBN,
         },

@@ -88,7 +88,7 @@ export default class QuanLyVD extends Vue {
   }
   async getExampleAPI() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comexample", {
+      .get("https://backend-fois-smile.herokuapp.com/example", {
         params: {
           machu: this.propCT,
         },
@@ -100,7 +100,7 @@ export default class QuanLyVD extends Vue {
   editVD(mavd: any, tenvd: any, nghia: any){
     if ((tenvd != "" && nghia != "")) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comexample/edit", {
+        .get("https://backend-fois-smile.herokuapp.com/example/edit", {
           params: {
             mavd: mavd,
             tenvd: tenvd,
@@ -123,7 +123,7 @@ export default class QuanLyVD extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa ví dụ ${tenvd}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comexample/remove", {
+        .get("https://backend-fois-smile.herokuapp.com/example/remove", {
           params: {
             mavd: mavd,
           },

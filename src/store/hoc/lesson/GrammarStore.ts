@@ -13,7 +13,7 @@ export default class GrammarStore extends VuexModule {
   @Action
   async getGrammarApi(mabh: string) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comgrammar", {
+      .get("https://backend-fois-smile.herokuapp.com/grammar", {
         params: {
           mabh: mabh,
         },

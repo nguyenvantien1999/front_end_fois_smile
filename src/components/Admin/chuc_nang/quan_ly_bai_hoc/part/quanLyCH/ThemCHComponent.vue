@@ -163,7 +163,7 @@ export default class ThemCH extends Vue {
     if (this.tench != "" && this.maphanch != "") {
       if (this.uploadImg == 100 && this.uploadAudio == 100) {
         axios
-          .get("https://backend-fois-smile.herokuapp.comquestion/add", {
+          .get("https://backend-fois-smile.herokuapp.com/question/add", {
             params: {
               mach: this.getMaCH,
               tench: this.getTenCH,

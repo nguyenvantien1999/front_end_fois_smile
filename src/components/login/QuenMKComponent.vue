@@ -59,7 +59,7 @@ export default class QuenMK extends Vue {
     if (this.getUserName != "") {
       this.loading = true;
       axios
-        .get("https://backend-fois-smile.herokuapp.comsendpasstomail", {
+        .get("https://backend-fois-smile.herokuapp.com/sendpasstomail", {
           params: {
             username: this.username,
           },

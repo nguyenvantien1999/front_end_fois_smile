@@ -91,7 +91,7 @@ export default class TienDoKiemTra extends Vue {
     let tiendo: never[] = [];
     if (matk != null) {
       await axios
-        .get("https://backend-fois-smile.herokuapp.comtestTranscript/get", {
+        .get("https://backend-fois-smile.herokuapp.com/testTranscript/get", {
           params: {
             matk: matk,
           },
@@ -104,7 +104,7 @@ export default class TienDoKiemTra extends Vue {
   }
 
   beforeCreate() {
-    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHVInfor").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor").then((res) => {
       res.data.forEach(
         async (info: { matt: any; matk: any; gioitinh: any; diachi: any }) => {
           info.matt = await this.transcriptAPI(info.matk); // bảng điểm theo mã tài khoản

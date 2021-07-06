@@ -27,7 +27,7 @@ export default class LoginAdminStore extends VuexModule {
   @Action
   async getAccAdminApi(acc: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comaccount/admin", {
+      .get("https://backend-fois-smile.herokuapp.com/account/admin", {
         params: {
           username: acc.user,
           password: acc.pass,
@@ -40,7 +40,7 @@ export default class LoginAdminStore extends VuexModule {
   @Action
   async getAccAdminInforApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comaccount/infor", {
+      .get("https://backend-fois-smile.herokuapp.com/account/infor", {
         params: {
           matk: this.getSessionMaTkAdmin,
         },
@@ -52,7 +52,7 @@ export default class LoginAdminStore extends VuexModule {
   @Action
   async getAccHVInforApi(matk: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comaccount/infor", {
+      .get("https://backend-fois-smile.herokuapp.com/account/infor", {
         params: {
           matk: matk,
         },

@@ -40,7 +40,7 @@ export default class SuaBH extends Vue {
   editBH() {
     if (this.propTenBH != "") {
       axios
-        .get("https://backend-fois-smile.herokuapp.comlesson/edit", {
+        .get("https://backend-fois-smile.herokuapp.com/lesson/edit", {
           params: {
             mabh: this.propMaBH,
             tenbh: this.propTenBH,

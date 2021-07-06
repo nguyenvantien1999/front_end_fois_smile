@@ -87,7 +87,7 @@ export default class ThemCT extends Vue {
   addCT() {
     if (this.getTenCT != "" && this.getNghia != "" ) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comstructure/add", {
+        .get("https://backend-fois-smile.herokuapp.com/structure/add", {
           params: {
             mact: this.getMaCT,
             tenct: this.getTenCT,

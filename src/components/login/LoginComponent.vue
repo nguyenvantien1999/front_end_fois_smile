@@ -262,7 +262,7 @@ export default class Login extends Vue {
       } else {
         this.loading = true;
         await axios
-          .get("https://backend-fois-smile.herokuapp.comaccount/regis", {
+          .get("https://backend-fois-smile.herokuapp.com/account/regis", {
             params: {
               record: {
                 username: this.getUsername,

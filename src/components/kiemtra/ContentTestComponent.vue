@@ -148,7 +148,7 @@ export default class ContentTest extends Vue {
   }
 
   async updateTranscript(){
-    await axios.get("https://backend-fois-smile.herokuapp.comtestTranscript/add", {
+    await axios.get("https://backend-fois-smile.herokuapp.com/testTranscript/add", {
       params: {
         record: {
           diem: this.getPoint,
@@ -167,7 +167,7 @@ export default class ContentTest extends Vue {
     this.showDiem = false;
     this.viTriCH = 0;
     axios
-      .get("https://backend-fois-smile.herokuapp.comquestion", {
+      .get("https://backend-fois-smile.herokuapp.com/question", {
         params: {
           mabai: this.getPropBai,
         },

@@ -78,7 +78,7 @@ export default class Question extends Vue {
     this.answerQuestion = [];
     this.correctAnswer = [];
     axios
-      .get("https://backend-fois-smile.herokuapp.comchildquestion", {
+      .get("https://backend-fois-smile.herokuapp.com/childquestion", {
         params: {
           mach: this.propMaCH,
         },
@@ -95,7 +95,7 @@ export default class Question extends Vue {
 
   getAnswerApi(machc: any) {
     axios
-      .get("https://backend-fois-smile.herokuapp.comanswer", {
+      .get("https://backend-fois-smile.herokuapp.com/answer", {
         params: {
           machc: machc,
         },
@@ -108,7 +108,7 @@ export default class Question extends Vue {
 
   getCorrectAnswerApi(machc: string) {
     axios
-      .get("https://backend-fois-smile.herokuapp.comcorrectanswer", {
+      .get("https://backend-fois-smile.herokuapp.com/correctanswer", {
         params: {
           machc: machc,
         },

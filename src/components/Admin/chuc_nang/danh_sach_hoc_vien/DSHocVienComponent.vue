@@ -53,7 +53,7 @@ export default class DSHocVien extends Vue {
     }
   }
   created() {
-    axios.get("https://backend-fois-smile.herokuapp.comaccount/getAllHVInfor").then((res) => {
+    axios.get("https://backend-fois-smile.herokuapp.com/account/getAllHVInfor").then((res) => {
       this.inforHV = res.data;
     });
   }

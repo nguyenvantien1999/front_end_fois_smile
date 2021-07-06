@@ -135,7 +135,7 @@ export default class Comment extends Vue {
   get getCommentAPI() {
     this.replyFlag = -1;
     axios
-      .get("https://backend-fois-smile.herokuapp.comcomment/getcomment", {
+      .get("https://backend-fois-smile.herokuapp.com/comment/getcomment", {
         params: {
           mabh: this.propMaBH,
         },
@@ -150,7 +150,7 @@ export default class Comment extends Vue {
 
   async addComment() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.comcomment/addcomment", {
+      .get("https://backend-fois-smile.herokuapp.com/comment/addcomment", {
         params: {
           ndbl: this.getComment,
           thoigian: Date.now(),
@@ -177,7 +177,7 @@ export default class Comment extends Vue {
     }
   }
   connect() {
-    this.stompClient = Stomp.over(new SockJS("https://backend-fois-smile.herokuapp.comwebsocket"));
+    this.stompClient = Stomp.over(new SockJS("https://backend-fois-smile.herokuapp.com/websocket"));
     this.stompClient.connect({}, (frame: any) => {
       this.stompClient.subscribe("/topic/getCmtSocket", (tick: any) => {
         this.commentList = JSON.parse(tick.body);

@@ -151,7 +151,7 @@ export default class QuanLyBH extends Vue {
     if (retVal == true) {
       this.removeBN(mabh);
       axios
-        .get("https://backend-fois-smile.herokuapp.comlesson/remove", {
+        .get("https://backend-fois-smile.herokuapp.com/lesson/remove", {
           params: {
             mabh: mabh,
           },
@@ -163,7 +163,7 @@ export default class QuanLyBH extends Vue {
   }
 
   removeBN(mabh: any) {
-    axios.get("https://backend-fois-smile.herokuapp.comlistening/remove", {
+    axios.get("https://backend-fois-smile.herokuapp.com/listening/remove", {
       params: {
         mabh: mabh,
       },

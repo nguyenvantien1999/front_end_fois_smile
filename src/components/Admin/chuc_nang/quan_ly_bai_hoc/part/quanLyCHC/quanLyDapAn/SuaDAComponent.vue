@@ -41,7 +41,7 @@ export default class SuaDA extends Vue {
   editCorrectAnswerApi() {
     if (this.propDaDung.tendadung != "") {
         axios
-          .get("https://backend-fois-smile.herokuapp.comcorrectanswer/edit", {
+          .get("https://backend-fois-smile.herokuapp.com/correctanswer/edit", {
             params: {
               madadung: this.propDaDung.madadung,
               tendadung: this.propDaDung.tendadung,

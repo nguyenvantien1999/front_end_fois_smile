@@ -201,7 +201,7 @@ export default class QuanLyCHC extends Vue {
     this.answerQuestion = [];
     this.correctAnswer = [];
     axios
-      .get("https://backend-fois-smile.herokuapp.comchildquestion", {
+      .get("https://backend-fois-smile.herokuapp.com/childquestion", {
         params: {
           mach: this.propMaCH,
         },
@@ -217,7 +217,7 @@ export default class QuanLyCHC extends Vue {
 
   getAnswerApi(machc: any) {
     axios
-      .get("https://backend-fois-smile.herokuapp.comanswer", {
+      .get("https://backend-fois-smile.herokuapp.com/answer", {
         params: {
           machc: machc,
         },
@@ -230,7 +230,7 @@ export default class QuanLyCHC extends Vue {
 
   getCorrectAnswerApi(machc: string) {
     axios
-      .get("https://backend-fois-smile.herokuapp.comcorrectanswer", {
+      .get("https://backend-fois-smile.herokuapp.com/correctanswer", {
         params: {
           machc: machc,
         },
@@ -244,7 +244,7 @@ export default class QuanLyCHC extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa đáp án: ${tenda}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comcorrectanswer/remove", {
+        .get("https://backend-fois-smile.herokuapp.com/correctanswer/remove", {
           params: {
             madadung: madadung,
           },
@@ -259,7 +259,7 @@ export default class QuanLyCHC extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa câu trả lời: ${tenctl}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comanswer/remove", {
+        .get("https://backend-fois-smile.herokuapp.com/answer/remove", {
           params: {
             mada: mactl,
           },
@@ -274,7 +274,7 @@ export default class QuanLyCHC extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa câu hỏi con: ${tenchc}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.comchildquestion/remove", {
+        .get("https://backend-fois-smile.herokuapp.com/childquestion/remove", {
           params: {
             machc: machc,
           },

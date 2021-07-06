@@ -12,7 +12,7 @@ export default class AlphabetStore extends VuexModule {
 
   @Action
   async getBCApi() {
-    await axios.get("https://backend-fois-smile.herokuapp.comalphabet").then((res) => {
+    await axios.get("https://backend-fois-smile.herokuapp.com/alphabet").then((res) => {
       this.context.commit("setBang", res.data);
     });
   }

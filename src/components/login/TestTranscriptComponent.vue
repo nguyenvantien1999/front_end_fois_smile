@@ -37,7 +37,7 @@ export default class TestTranscript extends Vue {
   }
   get transcriptAPI() {
     axios
-      .get("https://backend-fois-smile.herokuapp.comtestTranscript/get", {
+      .get("https://backend-fois-smile.herokuapp.com/testTranscript/get", {
         params: {
           matk: loginStore.getSessionMaTk,
         },
