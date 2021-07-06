@@ -137,7 +137,7 @@ export default class QuanLyNP extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa từ vựng: ${tennp}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/grammar/remove", {
+        .get("http://localhost:3000/grammar/remove", {
           params: {
             manp: manp,
           },

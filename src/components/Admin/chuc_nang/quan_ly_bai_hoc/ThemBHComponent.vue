@@ -54,7 +54,7 @@ export default class ThemBH extends Vue {
   addBH() {
     if (this.getTenBH != "") {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/lesson/add", {
+        .get("http://localhost:3000/lesson/add", {
           params: {
             mabh: this.getMaBH,
             tenbh: this.getTenBH,
@@ -74,7 +74,7 @@ export default class ThemBH extends Vue {
   }
 
   addListen() {
-    axios.get("https://backend-fois-smile.herokuapp.com/listening/add", {
+    axios.get("http://localhost:3000/listening/add", {
       params: {
         mabainghe: this.getMaNghe,
         tenbainghe: "Bài nghe " + (parseInt(this.propLessonLength) + 1),

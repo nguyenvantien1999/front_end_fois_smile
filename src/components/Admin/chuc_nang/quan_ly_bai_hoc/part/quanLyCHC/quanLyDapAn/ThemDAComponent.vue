@@ -55,7 +55,7 @@ export default class ThemDA extends Vue {
   addCorrectAnswerApi() {
     if (this.getTenDADung != "") {
         axios
-          .get("https://backend-fois-smile.herokuapp.com/correctanswer/add", {
+          .get("http://localhost:3000/correctanswer/add", {
             params: {
               madadung: this.getMaDA,
               tendadung: this.getTenDADung,

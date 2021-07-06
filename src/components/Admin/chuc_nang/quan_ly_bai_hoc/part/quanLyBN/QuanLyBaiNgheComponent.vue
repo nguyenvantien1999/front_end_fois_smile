@@ -26,7 +26,7 @@ export default class QuanLyBaiNghe extends Vue {
 
   get getListenApi() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/listening", {
+      .get("http://localhost:3000/listening", {
         params: {
           mabh: this.propBH,
         },

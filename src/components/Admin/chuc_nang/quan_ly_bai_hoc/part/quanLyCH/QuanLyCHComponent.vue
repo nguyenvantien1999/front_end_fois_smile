@@ -94,7 +94,7 @@ export default class QuanLyCauHoi extends Vue {
 
   get getQuestionApi() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/question", {
+      .get("http://localhost:3000/question", {
         params: {
           mabai: this.propBN,
         },
@@ -106,7 +106,7 @@ export default class QuanLyCauHoi extends Vue {
   }
   reloadQuestionApi() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/question", {
+      .get("http://localhost:3000/question", {
         params: {
           mabai: this.propBN,
         },
@@ -119,7 +119,7 @@ export default class QuanLyCauHoi extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa câu hỏi: ${tench}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/question/remove", {
+        .get("http://localhost:3000/question/remove", {
           params: {
             mach: mach,
           },

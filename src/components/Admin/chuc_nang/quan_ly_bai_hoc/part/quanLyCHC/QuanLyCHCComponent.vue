@@ -201,7 +201,7 @@ export default class QuanLyCHC extends Vue {
     this.answerQuestion = [];
     this.correctAnswer = [];
     axios
-      .get("https://backend-fois-smile.herokuapp.com/childquestion", {
+      .get("http://localhost:3000/childquestion", {
         params: {
           mach: this.propMaCH,
         },
@@ -217,7 +217,7 @@ export default class QuanLyCHC extends Vue {
 
   getAnswerApi(machc: any) {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/answer", {
+      .get("http://localhost:3000/answer", {
         params: {
           machc: machc,
         },
@@ -230,7 +230,7 @@ export default class QuanLyCHC extends Vue {
 
   getCorrectAnswerApi(machc: string) {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/correctanswer", {
+      .get("http://localhost:3000/correctanswer", {
         params: {
           machc: machc,
         },
@@ -244,7 +244,7 @@ export default class QuanLyCHC extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa đáp án: ${tenda}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/correctanswer/remove", {
+        .get("http://localhost:3000/correctanswer/remove", {
           params: {
             madadung: madadung,
           },
@@ -259,7 +259,7 @@ export default class QuanLyCHC extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa câu trả lời: ${tenctl}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/answer/remove", {
+        .get("http://localhost:3000/answer/remove", {
           params: {
             mada: mactl,
           },
@@ -274,7 +274,7 @@ export default class QuanLyCHC extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa câu hỏi con: ${tenchc}`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/childquestion/remove", {
+        .get("http://localhost:3000/childquestion/remove", {
           params: {
             machc: machc,
           },

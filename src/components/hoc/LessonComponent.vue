@@ -100,7 +100,7 @@ export default class LessonComponent extends Vue {
 
   progressNP() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/updateNP", {
+      .get("http://localhost:3000/progress/updateNP", {
         params: {
           matk: loginStore.getSessionMaTk,
           mabh: this.propMaBH,
@@ -113,7 +113,7 @@ export default class LessonComponent extends Vue {
 
   progressNghe() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/updateNghe", {
+      .get("http://localhost:3000/progress/updateNghe", {
         params: {
           matk: loginStore.getSessionMaTk,
           mabh: this.propMaBH,
@@ -126,7 +126,7 @@ export default class LessonComponent extends Vue {
 
   progressBT() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/updateBT", {
+      .get("http://localhost:3000/progress/updateBT", {
         params: {
           matk: loginStore.getSessionMaTk,
           mabh: this.propMaBH,

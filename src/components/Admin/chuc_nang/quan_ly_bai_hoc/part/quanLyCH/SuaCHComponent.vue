@@ -129,7 +129,7 @@ export default class SuaCH extends Vue {
     if (this.propCH.tench != "" && this.propCH.maphanch != "") {
       if (this.uploadImg == 100 && this.uploadAudio == 100) {
         axios
-          .get("https://backend-fois-smile.herokuapp.com/question/edit", {
+          .get("http://localhost:3000/question/edit", {
             params: {
               mach: this.propCH.mach,
               tench: this.propCH.tench,

@@ -27,7 +27,7 @@ export default class CountReply extends Vue {
   get getReplyAPI() {
     let length = 0;
     axios
-      .get("https://backend-fois-smile.herokuapp.com/reply/getreply", {
+      .get("http://localhost:3000/reply/getreply", {
         params: {
           mabl: this.propMaBL,
         },
@@ -40,7 +40,7 @@ export default class CountReply extends Vue {
     return 0;
   }
   connect() {
-    const client = new SockJS("https://backend-fois-smile.herokuapp.com/websocket");
+    const client = new SockJS("http://localhost:3000/websocket");
     const stompClient = Stomp.over(client);
     stompClient.connect({}, (frame) => {
       stompClient.subscribe("/topic/getRepSocket", (tick) => {

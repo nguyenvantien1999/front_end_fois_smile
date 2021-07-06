@@ -34,7 +34,7 @@ export default class ChiTietKiemTra extends Vue {
   }
   get transcriptAPI() {
     axios
-      .get("https://backend-fois-smile.herokuapp.com/testTranscript/get", {
+      .get("http://localhost:3000/testTranscript/get", {
         params: {
           matk: this.propMaTK,
         },

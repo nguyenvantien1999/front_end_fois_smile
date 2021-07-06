@@ -57,7 +57,7 @@ export default class FindLesson extends Vue {
 
   async insertProgress(matk: any, mabh: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/progress/insert", {
+      .get("http://localhost:3000/progress/insert", {
         params: {
           tuvung: true,
           matk: matk,

@@ -127,7 +127,7 @@ export default class ThemTK extends Vue {
         alert("Mật khẩu không đồng nhất");
       } else {
         await axios
-          .get("https://backend-fois-smile.herokuapp.com/account/regis", {
+          .get("http://localhost:3000/account/regis", {
             params: {
               record: {
                 username: this.getUsername,

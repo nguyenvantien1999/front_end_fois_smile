@@ -178,7 +178,7 @@ export default class ThemCHC extends Vue {
     if (this.getTenCHC!= "" && this.getMaLoaiCH!= "") {
       if (this.uploadImg == 100 && this.uploadAudio == 100) {
         axios
-          .get("https://backend-fois-smile.herokuapp.com/childquestion/add", {
+          .get("http://localhost:3000/childquestion/add", {
             params: {
               machc: this.getMaCHC,
               tenchc: this.getTenCHC,

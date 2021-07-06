@@ -39,7 +39,7 @@ export default class SuaNP extends Vue {
   editNP() {
     if (this.propGrammar.tennp != "") {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/grammar/edit", {
+        .get("http://localhost:3000/grammar/edit", {
           params: {
             manp: this.propGrammar.manp,
             tennp: this.propGrammar.tennp,

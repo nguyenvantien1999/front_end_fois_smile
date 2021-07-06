@@ -83,7 +83,7 @@ export default class ListBH extends Vue {
       this.$emit("selectMaBH", bai.mabh);
       if (bai.mabh != -1) {
         await axios
-          .get("https://backend-fois-smile.herokuapp.com/progress/insert", {
+          .get("http://localhost:3000/progress/insert", {
             params: {
               tuvung: true,
               matk: loginStore.getSessionMaTk,

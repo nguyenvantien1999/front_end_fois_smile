@@ -52,7 +52,7 @@ export default class LoginStore extends VuexModule {
     if (this.getStateAccount != "") {
       const acc: any = this.getStateAccount;
       await axios
-        .get("https://backend-fois-smile.herokuapp.com/account/update", {
+        .get("http://localhost:3000/account/update", {
           params: {
             matk: acc.matk,
             username: acc.username,
@@ -72,7 +72,7 @@ export default class LoginStore extends VuexModule {
   async updateAccountInforApi() {
     const acc: any = this.getAccountInfor;
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/info/update", {
+      .get("http://localhost:3000/account/info/update", {
         params: {
           matt: acc.matt,
           hoten: acc.hoten,
@@ -90,7 +90,7 @@ export default class LoginStore extends VuexModule {
   @Action
   async getAccountApi(acc: any) {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account", {
+      .get("http://localhost:3000/account", {
         params: {
           username: acc.user,
           password: acc.pass,
@@ -104,7 +104,7 @@ export default class LoginStore extends VuexModule {
   @Action
   async getAccountInforApi() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/account/infor", {
+      .get("http://localhost:3000/account/infor", {
         params: {
           matk: this.getSessionMaTk,
         },

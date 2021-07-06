@@ -99,7 +99,7 @@ export default class QuanLyCT extends Vue {
 
   async getStructureAPI() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/structure", {
+      .get("http://localhost:3000/structure", {
         params: {
           manp: this.propNP,
         },
@@ -113,7 +113,7 @@ export default class QuanLyCT extends Vue {
     let retVal = confirm(`Bạn thật sự muốn xóa cấu trúc này`);
     if (retVal == true) {
       axios
-        .get("https://backend-fois-smile.herokuapp.com/structure/remove", {
+        .get("http://localhost:3000/structure/remove", {
           params: {
             mact: mact,
           },

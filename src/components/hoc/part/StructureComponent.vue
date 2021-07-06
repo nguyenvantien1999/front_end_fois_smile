@@ -36,7 +36,7 @@ export default class Structure extends Vue {
 
   async created() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/structure", {
+      .get("http://localhost:3000/structure", {
         params: {
           manp: this.propNP,
         },

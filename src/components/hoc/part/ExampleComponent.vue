@@ -34,7 +34,7 @@ export default class Example extends Vue {
 
   async created() {
     await axios
-      .get("https://backend-fois-smile.herokuapp.com/example", {
+      .get("http://localhost:3000/example", {
         params: {
           machu: this.propCT,
         },
