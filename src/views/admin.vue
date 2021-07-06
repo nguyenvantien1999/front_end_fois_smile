@@ -2,7 +2,6 @@
   <div>
     <login-admin @setDN="setDN" v-if="getAccAdmin == false" />
     <admin-component v-else />
-    admin: {{getAccAdmin}}
   </div>
 </template>
 
