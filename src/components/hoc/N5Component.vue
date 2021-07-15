@@ -9,6 +9,7 @@
           :propContent="getContentBH"
           :propMaBH="getMaBH"
           :propPart="getPartFind"
+          @resetPart="setPart"
           v-show="getContentBH > 0"
         />
       </div>
@@ -48,6 +49,9 @@ export default class N5 extends Vue {
   }
   get getContentBH() {
     return this.contentBH;
+  }
+  setPart(){
+    this.partFind = "";
   }
   handleEvent(data: number) {
     this.contentBH = data;

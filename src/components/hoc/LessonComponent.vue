@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import Vocabulary from "../hoc/part/VocabularyComponent.vue";
 import Grammar from "../hoc/part/GrammarComponent.vue";
 import Listening from "../hoc/part/ListeningComponent.vue";
@@ -62,17 +62,22 @@ export default class LessonComponent extends Vue {
     return this.propContent;
   }
 
+  get getPropPart() {
+    return this.propPart;
+  }
+
   get getLessonPart() {
-    if(this.propPart != null){
-      if(this.propPart.toLowerCase().indexOf('từ vựng') != -1) 
+    if (this.getPropPart != null) {
+      if (this.getPropPart.toLowerCase().indexOf("từ vựng") != -1)
         this.selectLessonPart = 0;
-      if(this.propPart.toLowerCase().indexOf('ngữ pháp') != -1) 
+      if (this.getPropPart.toLowerCase().indexOf("ngữ pháp") != -1)
         this.selectLessonPart = 1;
-      if(this.propPart.toLowerCase().indexOf('nghe') != -1) 
+      if (this.getPropPart.toLowerCase().indexOf("nghe") != -1)
         this.selectLessonPart = 2;
-      if(this.propPart.toLowerCase().indexOf('bài tập') != -1) 
-        this.selectLessonPart = 3; 
-    } 
+      if (this.getPropPart.toLowerCase().indexOf("bài tập") != -1)
+        this.selectLessonPart = 3;
+      this.$emit("resetPart");
+    }
     return this.selectLessonPart;
   }
 
